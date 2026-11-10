@@ -42,9 +42,15 @@ Aleti–Mizrach (2021)。
   [PDF](https://www.econstor.eu/bitstream/10419/220930/1/cmsems-dp0570.pdf) — 已获全文
 - Amihud & Mendelson (1986). *Asset Pricing and the Bid-Ask Spread*. Journal of Financial
   Economics 17(2), 223–249. 未读全文，依发表摘要转述，详见第 3 节。 — 未获取全文
+- Madhavan (2000). *Market microstructure: A survey*. Journal of Financial Markets 3(3),
+  205–258. [PDF](https://www.acsu.buffalo.edu/~keechung/MGF743/Readings/Market%20microstructure%20A%20surveyq.pdf) — 已获全文
+- Biais, Glosten & Spatt (2005). *Market microstructure: A survey of microfoundations,
+  empirical results, and policy implications*. Journal of Financial Markets 8(2), 217–264.
+  [PDF](https://business.columbia.edu/sites/default/files-efs/pubfiles/1536/1536.pdf) — 已获全文
 - Kyle & Obizhaeva (2016). *Market Microstructure Invariance: Empirical Hypotheses*.
   Econometrica 84(4), 1345–1404（含在线附录）.
   [PDF](https://pages.nes.ru/aobizhaeva/Kyle-Obizhaeva-ECTA-2016-Invariance-with-Supplement.pdf) — 已获全文
+  *（所用副本存放在 cluster-g 目录；cluster-A 笔记把它记为该文件夹内未获取，本页只编入一条。）*
 
 ### 2. 交易成本分析与实施差额
 
@@ -98,6 +104,15 @@ Aleti–Mizrach (2021)。
 
 ### 4. 超越 Almgren–Chriss
 
+- Bouchaud, Gefen, Potters & Wyart (2004). *Fluctuations and response in financial markets:
+  the subtle nature of 'random' price changes*. Quantitative Finance 4(2), 176–190.
+  [arXiv:cond-mat/0307332](https://arxiv.org/pdf/cond-mat/0307332) — 已获全文
+- Lillo & Farmer (2004). *The long memory of the efficient market*. Studies in Nonlinear
+  Dynamics & Econometrics 8(3), Article 1.
+  [arXiv:cond-mat/0311053](https://arxiv.org/pdf/cond-mat/0311053) — 已获全文
+- Wyart, Bouchaud, Kockelkoren, Potters & Vettorazzo (2008). *Relation between bid-ask
+  spread, impact and volatility in order-driven markets*. Quantitative Finance 8(1), 41–57.
+  [arXiv:physics/0603084](https://arxiv.org/pdf/physics/0603084) — 已获全文
 - Schied & Schöneborn (2009). *Risk aversion and the dynamics of optimal liquidation strategies
   in illiquid markets*. Finance and Stochastics 13(2), 181–204（MPRA Paper 7105）.
   [PDF](https://mpra.ub.uni-muenchen.de/7105/1/MPRA_paper_7105.pdf) — 已获全文
@@ -112,6 +127,9 @@ Aleti–Mizrach (2021)。
 - Forsyth (2011). *A Hamilton–Jacobi–Bellman approach to optimal trade execution*. Applied
   Numerical Mathematics 61(2), 241–265.
   [PDF](https://cs.uwaterloo.ca/~paforsyt/optimal_trade.pdf) — 已获全文
+- Tóth, Lempérière, Deremble, de Lataillade, Kockelkoren & Bouchaud (2011). *Anomalous
+  price impact and the critical nature of liquidity in financial markets*. Physical Review
+  X 1, 021006. [arXiv:1105.1694](https://arxiv.org/pdf/1105.1694) — 已获全文
 - Forsyth, Kennedy, Tse & Windcliff (2012). *Optimal trade execution: a mean–quadratic-variation
   approach*. Journal of Economic Dynamics and Control 36(12), 1971–1991.
   [PDF](https://cs.uwaterloo.ca/~paforsyt/quad_trade.pdf) — 已获全文
@@ -133,6 +151,19 @@ Aleti–Mizrach (2021)。
 - Guéant, Lasry & Pu (2014). *Optimal Liquidation with Participation Constraints (A Convex
   Duality Method)*. Mathematics and Financial Economics（arXiv:1407.4614）.
   [arXiv:1407.4614](https://arxiv.org/pdf/1407.4614) — 已获全文
+- Cont, Kukanov & Stoikov (2014). *The price impact of order book events*. Journal of
+  Financial Econometrics 12(1), 47–88.
+  [arXiv:1011.6402](https://arxiv.org/pdf/1011.6402) — 已获全文
+- Bacry, Iuga, Lasnier & Lehalle (2015). *Market impacts and the life cycle of investors
+  orders*. Market Microstructure and Liquidity 1(2), 1550009.
+  [arXiv:1412.0217](https://arxiv.org/pdf/1412.0217) — 已获全文
+- Donier, Bonart, Mastromatteo & Bouchaud (2015). *A fully consistent, minimal model for
+  non-linear market impact*. Quantitative Finance 15(7), 1109–1121.
+  [arXiv:1412.0141](https://arxiv.org/pdf/1412.0141) — 已获全文
+- Zarinelli, Treccani, Farmer & Lillo (2015). *Beyond the square root: Evidence for
+  logarithmic dependence of market impact on size and participation rate*. Market
+  Microstructure and Liquidity 1(2), 1550004.
+  [arXiv:1412.2152](https://arxiv.org/pdf/1412.2152) — 已获全文
 - Brigo & Piat (2016). *Static vs adapted optimal execution strategies in two benchmark trading
   models*. arXiv:1609.05523. [arXiv:1609.05523](https://arxiv.org/pdf/1609.05523) — 已获全文
 - Lehalle & Neuman (2019). *Incorporating signals into optimal trading*. Finance and Stochastics
@@ -396,7 +427,7 @@ Aleti–Mizrach (2021)。
 - Bouchaud, Farmer & Lillo (2009). *How markets slowly digest changes in supply and demand*.
   *Handbook of Financial Markets: Dynamics and Evolution*（North-Holland/Elsevier）章节.
   [arXiv:0809.0822](https://arxiv.org/pdf/0809.0822) — 已获全文
-  *（Bouchaud 等 2018 年专著的理论支撑读物；第 3、13 章使用。）*
+  *（Bouchaud 等 2018 年专著的理论支撑读物；cluster-A 笔记中亦有记录；第 3、13 章使用。）*
 - Johnson (2010). *Algorithmic Trading & DMA: An Introduction to Direct Access Trading
   Strategies*. 4Myeloma Press. [出版社前置页／完整目录](https://www.gbv.de/dms/zbw/626979455.pdf) — 公开讲义或预览（书）
 - Lehalle & Laruelle (2013; 2nd ed. 2018). *Market Microstructure in Practice*. World Scientific.
@@ -526,14 +557,15 @@ Aleti–Mizrach (2021)。
 
 ## 计数
 
-- **书目总条目数：135。**
-- **已获全文：111。**
+- **书目总条目数：145。**
+- **已获全文：121。**
 - **公开讲义或预览（书）：9**（九本商业专著）。
 - **官方文件：6**（第 7 节四份 SEC 发布件／职员文件、SEC 订单竞争规则，以及 Binance 费率表）。
 - **未获取全文：9**（第 3.1 节；这 9 条也是仅有的、内容建立在摘要或二手材料之上的书目条目）。
 - 第 3 节另列 9 本专著正文与 12 篇其它付费墙论文，因每一条都已被某份已获取来源覆盖，不重复计入条目数。
 
-*覆盖说明。* `materials/papers/cluster-a/` 下另有十一份本地 PDF（Madhavan 2000；Bouchaud 2004；
-Lillo–Farmer 2004；Biais–Glosten–Spatt 2005；Wyart 2008；Bouchaud 2009；Tóth 2011；Cont 2014；
-Bacry 2015；Donier 2015；Zarinelli 2015），在提取笔记中没有对应条目，因此无法溯及作者／年份／
-发表处／URL，本页有意未将其立目。此处列出仅为透明起见；若日后笔记补上其元数据，即可并入。
+*本地文件对账。* `materials/papers/` 下共有 **151** 份 PDF。其中 **125 份**对应标为"已获全文"的
+**121** 条书目——文件数多于条目数，是因为有 4 篇工作在两个目录下各存了一份（Guéant 一般框架论文、
+Cartea–Jaimungal order-flow 论文、Lehalle–Neuman signals 论文，以及 Bouchaud–Farmer–Lillo 2009）。
+其余 **26 份**对应九本专著条目（21 份）与第 7 节五份 SEC 官方文件（5 份）。`cluster-a/` 的提取笔记
+现已覆盖该目录全部 **15** 份 PDF，各 cluster 均已完整编入目录，本地材料再无遗漏。
