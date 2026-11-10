@@ -1,0 +1,1394 @@
+- term: Markov decision process
+  term_zh: 马尔可夫决策过程
+  pinyin: ma
+  brief: 'The formal object for sequential decisions: states, actions, transition probabilities, a reward,
+    and a finite horizon or discount.'
+  brief_zh: 不确定性下序贯决策的形式化对象，由状态、动作、转移概率、奖励与折扣（或有限时域）构成。
+  detail: An execution problem becomes one of these once the state, action, transition and reward are
+    fixed; the state usually splits into private variables (elapsed time, remaining inventory) and market
+    variables.
+  detail_zh: 固定状态、动作、转移与奖励后，执行问题即成为一个 MDP；其状态通常拆为私有变量（已用时间、剩余库存）与市场变量。
+  chapter: '10.2'
+  first_seen: Chapter 10
+- term: Q-learning
+  term_zh: Q 学习
+  pinyin: xue
+  brief: A model-free algorithm that learns the expected value or cost of each action in each state by
+    updating estimates from transitions.
+  brief_zh: 无模型算法，通过不断由转移更新估计，学出每个状态下各动作的期望成本或价值。
+  detail: Applied to execution it is often run by backward induction, exploiting the approximate independence
+    of private and market variables so that tabular state spaces stay small.
+  detail_zh: 用于执行时常用反向归纳，利用私有变量与市场变量近似独立，使表格状态空间保持很小。
+  chapter: '10.3'
+  first_seen: Chapter 10
+- term: Actor–critic
+  term_zh: 演员–评论家
+  pinyin: yan
+  brief: 'A policy-gradient design with two parts: an actor that proposes actions and a critic that estimates
+    value and supplies the learning signal.'
+  brief_zh: 策略梯度的设计，含两部分：演员提出动作，评论家估计价值并提供学习信号。
+  detail: A continuous-action actor–critic (DDPG) allows execution policies to choose trade sizes continuously
+    and to carry past actions as state under transient impact.
+  detail_zh: 连续动作的演员–评论家（DDPG）让执行策略连续选择成交量，并在瞬时冲击下把过去动作纳入状态。
+  chapter: '10.5'
+  first_seen: Chapter 10
+- term: Deep Q-network
+  term_zh: 深度 Q 网络
+  pinyin: shen
+  brief: A neural network that approximates the Q-function, so high-dimensional states such as order-book
+    features need no lookup table.
+  brief_zh: 用神经网络逼近 Q 函数，从而无需查表即可使用订单簿特征等高维状态。
+  detail: It is trained with experience replay and a target network; because the admissible action set
+    changes with inventory, Ning et al. feed the state and action to the network and read out $Q(s,x)$.
+  detail_zh: 用经验回放与目标网络训练；由于可行动作集随库存变化，Ning 等把状态与动作一起输入网络并读出 $Q(s,x)$。
+  chapter: '10.5'
+  first_seen: Chapter 10
+- term: Double deep Q-learning
+  term_zh: 双重深度 Q 学习
+  pinyin: shuang
+  brief: A deep Q-network variant that separates action selection from value estimation across two networks,
+    reducing overestimation of Q-values.
+  brief_zh: 深度 Q 网络的改进：用两个网络把动作选择与价值估计分开，抑制 Q 值的系统性高估。
+  detail: It is the most common value-based method in the execution literature, used by Ning et al. and
+    by Karpe et al. in a multi-agent limit-order-book simulation.
+  detail_zh: 是执行文献中最常见的价值型方法，Ning 等与 Karpe 等（多智能体订单簿仿真）都采用了它。
+  chapter: '10.5'
+  first_seen: Chapter 10
+- term: Policy gradient
+  term_zh: 策略梯度
+  pinyin: ce
+  brief: A family of methods that optimise the policy directly by estimating the gradient of expected
+    reward with respect to the policy parameters.
+  brief_zh: 一族直接优化策略的方法，通过估计期望收益对策略参数的梯度来更新。
+  detail: Unlike value-based methods it handles continuous actions naturally, which is why it is used
+    for end-to-end execution where the action is a trade size.
+  detail_zh: 与价值型方法不同，它天然处理连续动作，因此被用于动作是成交量的端到端执行。
+  chapter: '10.5'
+  first_seen: Chapter 10
+- term: Proximal policy optimization
+  term_zh: 近端策略优化
+  pinyin: jin
+  brief: A policy-gradient method that clips each update so the new policy cannot move far from the old,
+    giving stable training.
+  brief_zh: 一种策略梯度方法，通过裁剪策略更新使新策略不远离旧策略，训练稳定且调参成本低。
+  detail: Lin and Beling use it end-to-end on raw level-2 data with a sparse reward against TWAP; their
+    agents converge in under 200,000 steps.
+  detail_zh: Lin–Beling 用它在原始 level-2 数据上端到端训练，奖励是对 TWAP 的稀疏信号，二十万步内收敛。
+  chapter: '10.5'
+  first_seen: Chapter 10
+- term: Imitation learning
+  term_zh: 模仿学习
+  pinyin: mo
+  brief: Learning a policy from demonstrations by another strategy rather than from a hand-designed reward,
+    avoiding costly exploration.
+  brief_zh: 从其他策略的示范中学习，而不是依赖人工设计的奖励，从而避免昂贵的探索。
+  detail: In execution it is attractive because exploring in a real market costs money and cannot be repeated;
+    FlowOE imitates an ensemble of classical and learned experts.
+  detail_zh: 在执行中很有吸引力，因为在真实市场探索既费钱又不可重复；FlowOE 便模仿了经典与学习式专家的集合。
+  chapter: '10.7'
+  first_seen: Chapter 10
+- term: Offline reinforcement learning
+  term_zh: 离线强化学习
+  pinyin: li
+  brief: Learning a policy from a fixed, pre-collected dataset without interacting with the environment,
+    where online exploration is too costly.
+  brief_zh: 只从预先收集的固定数据集学习策略，不与环境交互，适用于在线探索代价过高的场景。
+  detail: 'The known hazard is distributional shift: a policy trained off a fixed dataset meets only the
+    states its own errors create and can drift away from the market''s states.'
+  detail_zh: 已知风险是分布偏移：离线训练的策略只会遇到自己犯错造出的状态，容易偏离市场真实状态。
+  chapter: '10.7'
+  first_seen: Chapter 10
+- term: Policy distillation
+  term_zh: 策略蒸馏
+  pinyin: ce
+  brief: Training a student policy to reproduce a teacher's action distribution, so the student keeps
+    its behaviour without its extra inputs.
+  brief_zh: 训练学生策略去复现教师策略的动作分布，使学生在不具备教师额外输入的情况下继承其行为。
+  detail: Fang et al. distil a teacher that sees perfect future information into a student that sees only
+    current observables, removing future-information leakage at deployment.
+  detail_zh: Fang 等把能看到完美未来信息的教师蒸馏为只看当前可观测量的学生，从而在部署时消除未来信息泄露。
+  chapter: '10.7'
+  first_seen: Chapter 10
+- term: Microstructure invariance
+  term_zh: 微观结构不变性
+  pinyin: wei
+  brief: The empirical regularity that, measured in business time, the distribution of bet sizes and the
+    cost of a bet are the same across assets.
+  brief_zh: 实证规律：以商业时间度量时，各资产的下注金额分布与单笔成本相同。
+  detail: It gives the units (time, size, price) in which one execution policy can be made comparable
+    across assets; Kyle and Obizhaeva estimate bet arrival as $W^{2/3}$ and mean bet as $W^{1/3}$.
+  detail_zh: 它给出让同一策略在各资产间可比的单位（时间、规模、价格）；Kyle–Obizhaeva 估得下注到达率为 $W^{2/3}$、平均下注为 $W^{1/3}$。
+  chapter: '10.8'
+  first_seen: Chapter 10
+- term: Zero-shot transfer
+  term_zh: 零样本迁移
+  pinyin: ling
+  brief: Applying a policy to assets or markets it was never trained on, with no further learning, and
+    measuring the cost gap it suffers.
+  brief_zh: 把策略用在从未训练过的资产或市场上且不再学习，并度量其成本差距。
+  detail: Tran and Yu train once on 954 stocks and test unchanged on unseen stocks, crypto and a second
+    exchange, finding a transfer gap of within 0.015 spreads per share that does not reach unseen spread
+    regimes.
+  detail_zh: Tran–Yu 在 954 只股票上训练一次，原样测试于未见股票、加密与第二交易所，迁移差距在每股 0.015 个价差内，但无法覆盖未见的价差区间。
+  chapter: '10.8'
+  first_seen: Chapter 10
+- term: Concentrated liquidity
+  term_zh: 集中流动性
+  pinyin: ji
+  brief: An AMM design (Uniswap v3) where liquidity providers place liquidity within a chosen price range
+    instead of the full curve.
+  brief_zh: Uniswap v3 等 AMM 的设计，流动性提供者把流动性放在选定价格区间内，而非整条曲线。
+  detail: A narrower range earns more fees while the marginal rate is inside it but stops earning when
+    the rate exits, and predictable loss rises as the range narrows. Uniswap v3 offers fee tiers of 0.01%,
+    0.05% and 0.1%.
+  detail_zh: 区间越窄，在边际汇率位于区间内时手续费越多，但汇率一旦离开区间就停止收费，且可预测损失随区间收窄上升。Uniswap v3 提供 0.01%、0.05%、0.1% 三档费率。
+  chapter: '11'
+  first_seen: Chapter 11
+- term: Constant function market maker
+  term_zh: 恒定函数做市商
+  pinyin: heng
+  brief: A decentralised exchange that prices trades on a curve, accepting a trade only if a trading function
+    over its reserves does not decrease.
+  brief_zh: 一种去中心化交易所，仅当储备上的交易函数不下降时才接受交易，按曲线而非订单簿定价。
+  detail: A trade Delta is valid iff phi(R - Delta) >= phi(R). The trading function is concave in all
+    practical cases (Uniswap, SushiSwap, Balancer, Curve), which makes optimal routing a convex optimisation
+    problem.
+  detail_zh: 交易 Delta 可行当且仅当 phi(R - Delta) >= phi(R)。实际情形中交易函数是凹的（Uniswap、SushiSwap、Balancer、Curve），因此最优路由是一个凸优化问题。
+  chapter: '11'
+  first_seen: Chapter 11
+- term: Gas fee
+  term_zh: Gas 费
+  pinyin: fei
+  brief: The fixed on-chain cost of a blockchain transaction, borne per transaction rather than proportional
+    to trade size.
+  brief_zh: 链上交易的固定成本，按笔收取，而非随交易规模成比例。
+  detail: Because it is fixed per transaction, its share of total cost falls as notional grows, which
+    is why DEXs are cheaper only above about USD 10,000 and why routing with a fixed per-pool gas cost
+    becomes a mixed-integer problem.
+  detail_zh: 因为按笔固定，它在总成本中的占比随名义金额上升而下降，这正是 DEX 只在约 USD 10,000 以上更便宜、以及带固定每池 gas 成本的路由成为混合整数问题的原因。
+  chapter: '11'
+  first_seen: Chapter 11
+- term: Loss-versus-rebalancing (LVR)
+  term_zh: 再平衡损失
+  pinyin: zai
+  brief: The unhedgeable loss a liquidity provider suffers because the pool mechanically sells the appreciating
+    asset and buys the depreciating one.
+  brief_zh: 流动性提供者因池机械地卖出升值资产、买入贬值资产而承受的不可对冲损失。
+  detail: On a concentrated-liquidity AMM this is measured as predictable loss, which increases as the
+    liquidity range narrows. It is the floor on AMM execution cost, since a taker cannot trade cheaper
+    than the fee plus the loss the trade causes.
+  detail_zh: 在集中流动性 AMM 上它被度量为可预测损失，随流动性区间收窄而上升。它是 AMM 执行成本的下界：吃单成本不可能低于手续费加上这笔交易造成的损失。
+  chapter: '11'
+  first_seen: Chapter 11
+- term: Predictable loss
+  term_zh: 可预测损失
+  pinyin: ke
+  brief: The unhedgeable loss of a concentrated-liquidity liquidity provider, computed from the pool's
+    curvature and rising as the range narrows.
+  brief_zh: 集中流动性提供者的不可对冲损失，由池的曲率算出，随区间收窄而上升。
+  detail: It is the concentrated-liquidity analogue of loss-versus-rebalancing and the symmetric counterpart
+    of the convexity cost an AMM taker pays; fee income trades off against it.
+  detail_zh: 它是集中流动性情形下 loss-versus-rebalancing 的对应物，也是 AMM 吃单方所付凸性成本的镜像；手续费收入与它相权衡。
+  chapter: '11'
+  first_seen: Chapter 11
+- term: Sandwich attack
+  term_zh: 三明治攻击
+  pinyin: san
+  brief: An MEV strategy that places trades before and after a victim's on-chain trade to worsen its price
+    and profit from the move.
+  brief_zh: 一种 MEV 策略，在受害者链上交易前后各插入一笔交易以恶化其成交价并从中获利。
+  detail: For n user trades the maximum price impact from sandwiching relative to the average is O(log
+    n); sandwiched trades show a pronounced upward shift in routing sub-optimality. Batch trading at a
+    single clearing price eliminates it.
+  detail_zh: 对 n 笔用户交易，三明治造成的最大价格冲击相对平均为 O(log n)；被三明治的交易在路由次优性上明显上移。按单一清算价批量成交可以消除它。
+  chapter: '11'
+  first_seen: Chapter 11
+- term: Settlement latency
+  term_zh: 结算延迟
+  pinyin: jie
+  brief: The waiting time until a blockchain confirms a transfer, during which a cross-exchange arbitrageur
+    is exposed to price risk.
+  brief_zh: 区块链确认转账前的等待时间，其间跨所套利者暴露于价格风险。
+  detail: It gives a no-trade band that widens with latency and volatility, so cross-venue routing is
+    a control problem over settlement time, not only a fee comparison. Holding inventory on the destination
+    venue removes the latency but substitutes exchange default risk.
+  detail_zh: 它给出一个随延迟与波动率放大的无交易带，因此跨所路由是关于结算时间的控制问题，而不只是费率比较。在目标场所持有库存可消除延迟，但换来交易所违约风险。
+  chapter: '11'
+  first_seen: Chapter 11
+- term: Tiered maker-taker fee
+  term_zh: 分层做市—吃单费率
+  pinyin: fen
+  brief: An exchange fee charged as a fraction of traded notional, tiered by realised 30-day volume and
+    differing between posting and taking.
+  brief_zh: 按成交额比例收取的交易所费，费率取决于过去 30 天的成交量，且挂单与吃单不同。
+  detail: Binance spot runs from 0.1000% maker/taker at retail to 0.0110%/0.0230% at VIP 9, maker below
+    taker at every tier and zero negotiable for market makers. Because the tier depends on volume already
+    traded, the marginal fee is history-dependent.
+  detail_zh: Binance 现货从零售端的 0.1000% maker/taker 到 VIP 9 的 0.0110%/0.0230%，每档 maker 都低于 taker，做市商可协商至零。档位取决于已实现的成交量，因此边际费率依赖历史。
+  chapter: '11'
+  first_seen: Chapter 11
+- term: Internalization
+  term_zh: 内部化
+  pinyin: nei
+  brief: Executing a client's marketable order against a broker-dealer's own inventory or flow instead
+    of sending it to a public venue.
+  brief_zh: 经纪自营商用自有库存或自身订单流撮合客户可成交订单、而不送往公开场所的做法。
+  detail: In US equities a large share of retail flow is internalized or routed off-exchange; the accompanying
+    price improvement is real and most valuable when the spread is at its one-cent minimum.
+  detail_zh: 美国股票中相当比例的零售流量被内部化或在场外路由；随之而来的价格改善是真实的，且在价差处于 1 美分最低值附近时最有价值。
+  chapter: '12.1'
+  first_seen: Chapter 12
+- term: Information half-life
+  term_zh: 信息半衰期
+  pinyin: xin
+  brief: The time a private valuation signal is expected to persist before the market prices it away;
+    it sets the pace of an informed trade.
+  brief_zh: 私有估值信号在被市场价格消化前预期能维持的时间，决定知情交易的节奏。
+  detail: Distinct from the Almgren–Chriss trade half-life $\theta=1/\kappa$, which is set by liquidity,
+    volatility and risk aversion. An active signal shortens the effective decay of the position below
+    what a pure risk frame would choose.
+  detail_zh: 与 Almgren–Chriss 的交易半衰期 $\theta=1/\kappa$（由流动性、波动率与风险厌恶决定）不同；活跃信号会把持仓的有效衰减压到低于纯风险框架的水平。
+  chapter: '12.3'
+  first_seen: Chapter 12
+- term: Best execution
+  term_zh: 最优执行义务
+  pinyin: zui
+  brief: A broker's regulatory duty to seek the best available terms for a client order, fixing the feasible
+    routing set and the fair benchmark.
+  brief_zh: 经纪商为客户订单争取最优成交条件的监管义务，它确定可行的路由集合，以及成交可以公允地对照哪个基准来评估。
+  detail: Because the arrival price is known at the decision instant while VWAP and the close are functions
+    of the price path, a broker working to a random benchmark and a client holding it to the arrival price
+    are measuring different things.
+  detail_zh: 到达价在决策瞬间已知，而 VWAP 与收盘价是价格路径自身的函数，因此按随机基准工作的经纪商与拿到达价考核它的客户度量的并非同一件事。
+  chapter: '12.6'
+  first_seen: Chapter 12
+- term: Principal–agent problem
+  term_zh: 委托代理问题
+  pinyin: wei
+  brief: The misalignment between the broker who executes a trade and the client who bears its cost, set
+    by the benchmark and the fee schedule.
+  brief_zh: 执行交易的一方（经纪商）与承担其成本的一方（客户）之间的错位，由基准与费率结构共同决定。
+  detail: Benchmark attribution decides who bears the trend component of a move, and a maker-taker fee
+    split changes the broker's routing incentive; reading the two together as one agency problem is this
+    chapter's judgement.
+  detail_zh: 基准归因决定谁承担价格移动的趋势成分，maker–taker 费用分配改变经纪商的路由动机；把两者合读为一个委托代理问题是本章判断。
+  chapter: '12.6'
+  first_seen: Chapter 12
+- term: Impact surface
+  term_zh: 冲击面
+  pinyin: chong
+  brief: Market impact as a function of both participation rate and duration, rather than of order size
+    alone.
+  brief_zh: 把市场冲击同时视为参与率与时长两者的函数，而不只是订单规模的函数。
+  detail: Zarinelli et al. fit $g(\eta,F)=a\log_{10}(1+b\eta)\log_{10}(1+cF)$ with $\hat a=0.035$, $\hat
+    b=60$, $\hat c=61$, and find the double power law leaves structure in the residuals while this does
+    not.
+  detail_zh: Zarinelli 等拟合 $g(\eta,F)=a\log_{10}(1+b\eta)\log_{10}(1+cF)$，$\hat a=0.035$、$\hat b=60$、$\hat
+    c=61$；双重幂律在残差中留下结构，此式则不然。
+  chapter: '13.3'
+  first_seen: Chapter 13
+- term: Metaorder
+  term_zh: 元订单
+  pinyin: yuan
+  brief: The bundle of child orders that implements one trading decision; the parent order whose impact
+    the square-root law describes.
+  brief_zh: 实现同一次交易决策的一束子单，即方根律所描述其冲击的父订单。
+  detail: Tóth et al. (2011) define it as "the bundle of orders corresponding to a single trading decision";
+    impact is measured from the first to the last child order.
+  detail_zh: Tóth 等称之为"对应同一次交易决策的一束订单"，冲击由首末子单之间的价格变化度量。
+  chapter: '13.3'
+  first_seen: Chapter 13
+- term: Participation rate
+  term_zh: 参与率
+  pinyin: can
+  brief: The share of market volume during the execution window that the trader's own order accounts for;
+    the variable a POV strategy fixes.
+  brief_zh: 在成交窗口内交易者自身订单占市场成交量的比例，也是 POV 策略固定的变量。
+  detail: Zarinelli et al. write it as $\eta=Q/(V(t_e)-V(t_s))$, distinct from the duration $F$ and the
+    daily fraction $\pi=\eta F$.
+  detail_zh: Zarinelli 等写作 $\eta=Q/(V(t_e)-V(t_s))$，与时长 $F$ 及日内占比 $\pi=\eta F$ 相区别。
+  chapter: '13.3'
+  first_seen: Chapter 13
+- term: Realised spread
+  term_zh: 实现价差
+  pinyin: shi
+  brief: Twice the difference between the execution price and the quote midpoint measured a fixed interval
+    after the order, usually five minutes.
+  brief_zh: 成交价与订单之后固定间隔（通常五分钟）所测报价中间价之差的二倍。
+  detail: Its difference from the effective spread approximates the order's own price impact; SEC Rule
+    605 requires market centres to publish both monthly.
+  detail_zh: 它与有效价差之差近似为该订单自身的价格冲击；美国 SEC Rule 605 要求交易中心按月公布两者。
+  chapter: '13.5'
+  first_seen: Chapter 13
+- term: Data snooping
+  term_zh: 数据窥探
+  pinyin: shu
+  brief: Selecting a model or parameter on the same sample used to report its performance, which makes
+    the reported result look better than it is.
+  brief_zh: 在用于报告业绩的同一个样本上挑选模型或参数，使报告结果好于其真实水平。
+  detail: Mitigated by a walk-forward split, fitting on one window and scoring on the next, with the functional
+    form chosen once.
+  detail_zh: 对策是步进式切分：在一个窗口拟合、在下一个窗口打分，函数形式只选定一次。
+  chapter: '13.6'
+  first_seen: Chapter 13
+- term: Liquidity rebate
+  term_zh: 流动性返佣
+  pinyin: liu
+  brief: The payment an exchange gives a resting limit order when it later executes, funded by the fee
+    charged to marketable orders.
+  brief_zh: 交易所对挂入订单簿并最终成交的限价单支付的挂单方返还，资金来自向可成交订单收取的吃单费。
+  detail: NASDAQ's recorded terms were USD 0.0029 per share to a visible maker and USD 0.0030 from a taker;
+    inverted venues reverse the two.
+  detail_zh: Hasbrouck 记录的 NASDAQ 条款为可见挂单每股 USD 0.0029、吃单方 USD 0.0030；反向报价场所把两者倒置。
+  chapter: '13.9'
+  first_seen: Chapter 13
+- term: Market impact model
+  term_zh: 市场冲击模型
+  pinyin: shi
+  brief: The assumed rule for how a trade moves the price, split into temporary and permanent parts; every
+    execution scheduler optimises against it.
+  brief_zh: 描述一定规模交易如何推动价格（通常分为临时与永久两部分）的函数形式，是每个执行排程优化的对象。
+  detail: The linear permanent-impact form of Kyle (1985) is the theoretical benchmark; the empirical
+    literature (Toth et al. 2011; Bouchaud 2010) finds impact is concave in size and transient in time.
+    Gueant (2013) shows permanent impact can be nonlinear and still arbitrage-free.
+  detail_zh: Kyle（1985）的线性永久冲击是理论基准；经验文献（Toth 等 2011；Bouchaud 2010）发现冲击对规模是凹的、对时间是瞬态的。Gueant（2013）证明永久冲击可以非线性且仍无套利。
+  chapter: '14'
+  first_seen: Chapter 14
+- term: Model-free reinforcement learning
+  term_zh: 无模型强化学习
+  pinyin: wu
+  brief: The learning paradigm that treats execution as a Markov decision process and learns a policy
+    from experience, without a known impact model.
+  brief_zh: 把执行当作马尔可夫决策过程、从经验中学出策略、不假定已知冲击模型的学习范式。
+  detail: State is typically elapsed time, remaining inventory and market features; the action is traded
+    quantity, a limit price, or a fraction across order types and levels. Results are simulation-trained,
+    so the out-of-distribution and sim-to-real questions remain open.
+  detail_zh: 状态通常是已过时间、剩余库存与市场特征；动作是交易量、限价，或跨委托类型与档位的比例。结果多在仿真中训练，因此分布外泛化与仿真—现实差距仍开放。
+  chapter: '14'
+  first_seen: Chapter 14
+- term: Stochastic control
+  term_zh: 随机控制
+  pinyin: sui
+  brief: The paradigm that casts execution as a controlled state process plus an objective, and solves
+    the resulting dynamic program or HJB equation.
+  brief_zh: 把执行问题写成受控状态过程（库存、价格）加目标函数，再解动态规划或 HJB 方程的范式。
+  detail: Its lineage runs from Bertsimas-Lo (1998) and Almgren-Chriss (2000) through Obizhaeva-Wang,
+    Gueant and the Forsyth HJB work. Relaxing its assumptions - linear impact, martingale price, mean-variance
+    objective - defines most of the post-2000 execution literature.
+  detail_zh: 谱系从 Bertsimas-Lo（1998）、Almgren-Chriss（2000）经 Obizhaeva-Wang、Gueant 到 Forsyth 的 HJB 方法。放松其假设——线性冲击、鞅价格、均值—方差目标——定义了
+    2000 年后的大部分执行文献。
+  chapter: '14'
+  first_seen: Chapter 14
+- term: Time consistency
+  term_zh: 时间一致性
+  pinyin: shi
+  brief: The property that the policy chosen today stays optimal later, so it can run as a feedback rule;
+    mean-variance execution lacks it.
+  brief_zh: 今天选定的策略在之后仍然最优、因而可以作为反馈规则执行的性质；Almgren-Chriss 的均值—方差目标不具备它。
+  detail: Mean-variance execution is a pre-commitment policy; Forsyth et al. (2012) replace it with a
+    mean-quadratic-variation criterion that is time-consistent, and recover the Almgren-Chriss schedule
+    as the arithmetic-Brownian-motion optimum.
+  detail_zh: 均值—方差执行是一种预先承诺策略；Forsyth 等（2012）用时间一致的"均值—二次变差"准则替代它，并把 Almgren-Chriss 排程还原为算术布朗运动下的最优解。
+  chapter: '14'
+  first_seen: Chapter 14
+- term: open outcry
+  term_zh: 公开喊价
+  pinyin: gong
+  brief: The pre-electronic pit protocol in which bids and offers are cried aloud and quotes stay passive
+    until someone hits or lifts them.
+  brief_zh: 场内以口头喊出买卖价、须有人主动"砸单/吃单"才成交的报价方式。
+  detail: On the CME a bid was announced price first, quantity second, and there was no time priority
+    at a price — a seller could hit any trader bidding the same price. The protocol's successors — price
+    priority, trade-through rules, the make-or-take distinction — survive in electronic rulebooks.
+  detail_zh: CME 规则中，报价被动，同一价位无时间优先；由此派生的价格优先、成交穿透规则与"主动/被动"之分一直沿用到电子市场。
+  chapter: '2.1'
+  first_seen: Chapter 2
+- term: specialist
+  term_zh: 专家经纪人
+  pinyin: zhuan
+  brief: The NYSE member who ran one stock's limit-order book, owing narrow quotes and public priority,
+    knowing the book and getting first look.
+  brief_zh: 纽交所管理某只股票唯一限价订单簿的会员，负有维持窄价差等义务，并享有知晓簿面、优先接单的特权。
+  detail: The specialist system is the template for every later market-making debate. His privileges are
+    the ancestor of the modern high-frequency market maker's informational and speed advantage; his obligations
+    the ancestor of affirmative and negative trading obligations.
+  detail_zh: 专家经纪人的特权是现代高频做市商信息与速度优势的前身，其义务则是后来"肯定性/否定性交易义务"讨论的源头。
+  chapter: '2.1'
+  first_seen: Chapter 2
+- term: trade-through
+  term_zh: 成交穿透
+  pinyin: cheng
+  brief: An execution at a price inferior to a bid or offer standing elsewhere, so that a better-priced
+    resting order is bypassed.
+  brief_zh: 以劣于市场他处最优挂单的价格成交，从而跳过了更优价的挂单。
+  detail: On the CME it was a trading infraction (Rule 528). In Reg NMS, Rule 611 requires trading centres
+    to make a good-faith effort to avoid trade-throughs of protected quotations only.
+  detail_zh: 在 CME 属违规（第 528 条）；在 Reg NMS 中，第 611 条只要求交易中心尽力避免穿透"受保护"报价。
+  chapter: '2.1'
+  first_seen: Chapter 2
+- term: circuit breaker
+  term_zh: 熔断机制
+  pinyin: rong
+  brief: A market-wide halt triggered by a large index fall, meant to interrupt a collapse and let participants
+    reassess.
+  brief_zh: 指数相对前收盘大跌时触发的全市场停牌，用于打断暴跌、让参与者重新评估。
+  detail: US market-wide circuit breakers were first instituted in response to the October 1987 market
+    "break", first triggered on 27 October 1997, and fired four times in March 2020. Crypto venues have
+    no consolidated market, and this chapter judges that they have no direct analogue.
+  detail_zh: 美国市场级熔断为应对 1987 年 10 月崩盘设立，1997 年 10 月 27 日首次触发，2020 年 3 月四次触发；加密市场没有统一市场，本章判断其没有直接对应物。
+  chapter: '2.2'
+  first_seen: Chapter 2
+- term: ECN
+  term_zh: 电子通信网络
+  pinyin: dian
+  brief: A non-exchange electronic venue, such as Instinet or Island, that matched orders without taking
+    on the regulation of an exchange.
+  brief_zh: 电子通信网络，指 Instinet、Island 这类无需注册为交易所即可撮合订单的电子场所。
+  detail: Regulated as alternative trading systems (ATSs) after the SEC adopted Regulation ATS in 1997.
+    By October 2009 the five active ECNs executed about 10.8% of US share volume.
+  detail_zh: SEC 1997 年通过 Reg ATS 后按另类交易系统监管；到 2009 年 10 月，五家活跃 ECN 约占美国股数成交量的 10.8%。
+  chapter: '2.2'
+  first_seen: Chapter 2
+- term: NBBO
+  term_zh: 全国最优买卖报价
+  pinyin: quan
+  brief: The National Best Bid and Offer — the highest bid and lowest offer across all trading centres,
+    the reference for best execution and routing.
+  brief_zh: 全国最优买卖报价，由合并报价数据算出的全市场最高买价与最低卖价，是执行与路由的参照。
+  detail: For NYSE- and AMEX-listed stocks it is computed from the Consolidated Quote System; the SEC
+    designates such operators as Securities Information Processors (SIPs).
+  detail_zh: 对纽交所和美国交易所挂牌股票，NBBO 由合并报价系统算出；SEC 将这类系统的运营方认定为证券信息处理器（SIP）。
+  chapter: '2.2'
+  first_seen: Chapter 2
+- term: decimalisation
+  term_zh: 最小报价单位十进制化
+  pinyin: zui
+  brief: The change of the US equity pricing increment from one-eighth of a dollar to one cent, legislated
+    in 1997 and completed in 2001.
+  brief_zh: 美国股票报价增量由 1/8 美元改为 1 美分，1997 年立法、2001 年完成，压缩了价格竞争的网格。
+  detail: Tick size is, in Hasbrouck's phrase, the price of time priority — a finer tick makes jumping
+    a long queue at the same price much cheaper.
+  detail_zh: 用 Hasbrouck 的话说，最小报价单位是时间优先的价格：网格越细，插到同价长队队首就越便宜。
+  chapter: '2.3'
+  first_seen: Chapter 2
+- term: colocation
+  term_zh: 共置
+  pinyin: gong
+  brief: Placing a firm's computer in the exchange's data centre, beside the matching engine, to minimise
+    the distance and latency to the market.
+  brief_zh: 把交易公司的服务器放进交易所机房、靠近撮合引擎，以最小化到市场的物理距离与延迟。
+  detail: Collocation is the modern successor to the floor's informational and access advantage — the
+    new "floor" is a blade server. The SEC's approval of IEX in 2016 introduced a 350-microsecond delay
+    as a counter-measure.
+  detail_zh: 共置是场内信息与接入优势的现代继任者，新的"交易池"就是一台刀片服务器；SEC 2016 年批准 IEX 时加入 350 微秒延迟作为反制。
+  chapter: '2.4'
+  first_seen: Chapter 2
+- term: order protection rule
+  term_zh: 订单保护规则
+  pinyin: ding
+  brief: Reg NMS Rule 611 — centres must try to avoid executions inferior to protected quotations; only
+    immediately accessible quotes are protected.
+  brief_zh: Reg NMS 第 611 条，要求交易中心尽量避免以劣于受保护报价的价格成交；只有可立即自动执行的报价才受保护。
+  detail: The "immediately accessible" condition refuses protection to slow, manual quotations and forced
+    floor markets to automate. It is not a prohibition — a market need only make a good-faith effort,
+    and an order can instead be sent as an intermarket sweep order (ISO).
+  detail_zh: “可立即执行”这一条件排除了缓慢的手工报价，迫使场内市场自动化；它不是禁令，交易中心只需尽力，也可改用跨市场扫单指令（ISO）。
+  chapter: '2.4'
+  first_seen: Chapter 2
+- term: Reg NMS
+  term_zh: 全国市场系统条例
+  pinyin: quan
+  brief: The SEC's Regulation National Market System (2005), which links the separate US equity trading
+    centres into a virtually consolidated market.
+  brief_zh: SEC 2005 年通过的《全国市场系统条例》，把美国各股票交易中心联结成"虚拟合并"市场。
+  detail: It has four components — the Order Protection Rule (611), the Access Rule (610) with a USD 0.003
+    per-share access-fee cap, the Sub-Penny Rule (612), and the Market Data Rules. It was proposed February
+    2004, adopted June 2005 and phased in over 2006.
+  detail_zh: 含订单保护规则（611）、接入规则（610，接入费上限每股 USD 0.003）、最小报价单位规则（612）与市场数据规则；2004 年 2 月提出、2005 年 6 月通过、2006
+    年分期实施。
+  chapter: '2.4'
+  first_seen: Chapter 2
+- term: funding rate
+  term_zh: 资金费率
+  pinyin: zi
+  brief: The periodic payment between longs and shorts of a perpetual, a clamped function of the futures-spot
+    premium, which anchors it to spot.
+  brief_zh: 永续合约多空之间的周期性支付，是期货与现货价差的截断函数，用于锚定现货并直接进入执行成本。
+  detail: Because funding accrues on the remaining position, it adds an effective carry to the holding
+    cost, tilting the optimal liquidation path away from a pure Almgren-Chriss schedule.
+  detail_zh: 资金费率按剩余头寸计提，等于给持有成本加了一项 carry，使最优清算路径偏离纯粹的 Almgren–Chriss 计划。
+  chapter: '2.5'
+  first_seen: Chapter 2
+- term: perpetual futures
+  term_zh: 永续合约
+  pinyin: yong
+  brief: A futures contract with no expiry, anchored to spot by periodic funding payments; crypto's main
+    venue, introduced by BitMEX in 2016.
+  brief_zh: 没有到期日、靠周期性资金支付锚定现货的期货合约，加密市场的主要执行场所，BitMEX 2016 年首创。
+  detail: In 2022 the median total daily perpetual-futures volume across exchanges was USD 101.9 billion,
+    about two to three times total spot volume. A perpetual leg typically has a wider quoted spread but
+    more depth and more balanced flow than spot.
+  detail_zh: 2022 年全市场永续日成交量中位数约 1019 亿美元，为现货的两到三倍；永续腿通常报价价差更宽，但深度更好、流更均衡。
+  chapter: '2.5'
+  first_seen: Chapter 2
+- term: Bid-ask spread
+  term_zh: 买卖价差
+  pinyin: mai
+  brief: The gap between the best sell price and the best buy price; the toll a trader pays for demanding
+    immediate execution.
+  brief_zh: 最优卖价与最优买价之差，是需要即时成交者缴纳的通行费。
+  detail: Wyart et al. (2008) split it into order processing, adverse selection and inventory-risk components;
+    none of the three is a fee.
+  detail_zh: Wyart 等（2008）将其拆为订单处理、逆向选择与库存风险三类成分，三者都不是手续费。
+  chapter: '3.1'
+  first_seen: Chapter 3
+- term: Liquidity
+  term_zh: 流动性
+  pinyin: liu
+  brief: The ability to trade when you want to trade; split into immediacy, tightness, depth and resiliency,
+    and behaving as a network externality.
+  brief_zh: 想交易时就能交易的能力，可拆为即时性、紧度、深度、弹性，并具有网络外部性。
+  detail: Harris's operative definition; Hasbrouck splits it into immediacy (speed), tightness (a cheap
+    round trip), depth (size near the quote) and resiliency (price effects that die out).
+  detail_zh: Harris 的务实定义；Hasbrouck 将其拆为即时性、紧度、深度与弹性四项属性。
+  chapter: '3.1'
+  first_seen: Chapter 3
+- term: Liquidity supplier
+  term_zh: 流动性提供者
+  pinyin: liu
+  brief: A profit-motivated trader who is the counterparty so others can trade when they want — dealers
+    across time, arbitrageurs across markets.
+  brief_zh: 作为对手方让他人想交易时就能成交的利润动机交易者：做市商跨时间，套利者跨市场。
+  detail: Harris notes dealers restore inventory by shifting both bid and ask; adverse selection is the
+    main problem they face, and it widens the spread they must charge.
+  detail_zh: Harris 指出做市商靠同向移动买卖报价来恢复库存；逆向选择是其首要难题，并迫使其扩大价差。
+  chapter: '3.1'
+  first_seen: Chapter 3
+- term: Make/take choice
+  term_zh: 挂单—吃单选择
+  pinyin: gua
+  brief: The decision to post a resting order or cross the spread; posting is cheaper but may never execute,
+    taking costs the spread and is certain.
+  brief_zh: 挂出被动单还是主动跨越价差：挂单更便宜却可能不成交，吃单付出价差但确定成交。
+  detail: Order books rank the resulting competition by price, then time, with displayed orders ahead
+    of hidden ones; only comparative speed has value in that race.
+  detail_zh: 撮合先按价格再按时间排序，显示订单优先于隐藏订单；这场竞赛里只有相对速度才有价值。
+  chapter: '3.1'
+  first_seen: Chapter 3
+- term: Utilitarian trader
+  term_zh: 功利交易者
+  pinyin: gong
+  brief: A trader who trades to solve a non-trading problem and accepts the costs; his willingness to
+    pay funds all profit-motivated traders.
+  brief_zh: 为交易之外的目的而交易、并愿意承担成本的人；其支付意愿供养所有利润动机交易者。
+  detail: Harris's counterpart is the profit-motivated trader, split into informed traders, parasitic
+    traders (order anticipators, bluffers), and liquidity suppliers.
+  detail_zh: 与之相对的是利润动机交易者，再分为知情者、寄生交易者（抢单者、虚张声势者）与流动性提供者。
+  chapter: '3.1'
+  first_seen: Chapter 3
+- term: Effective spread
+  term_zh: 有效价差
+  pinyin: you
+  brief: Twice the gap between the execution price and the quote midpoint at the trade; the realized cost
+    of an immediately executed order.
+  brief_zh: 成交价与成交时报价中间价之差的两倍，是立即成交订单的实际代价。
+  detail: Hasbrouck's decomposition writes effective cost as p minus m and realized cost as p minus the
+    five-minute midpoint m5; price improvement is the amount by which p beats the near-side quote.
+  detail_zh: Hasbrouck 的分解：有效成本为 p−m、实现成本为 p−m5；价格改善为成交价优于近侧报价的差额。
+  chapter: '3.2'
+  first_seen: Chapter 3
+- term: Price improvement
+  term_zh: 价格改善
+  pinyin: jia
+  brief: The amount by which an execution price beats the near-side quote, as in a dark trade or against
+    a hidden order.
+  brief_zh: 成交价优于近侧报价的幅度，例如在暗池成交或与隐藏单成交时。
+  detail: It is why the effective spread can be narrower than the posted spread; under maker-taker pricing
+    the quoted spread is not the traded cost at all.
+  detail_zh: 这正是有效价差可以窄于报价差的原因；在 maker-taker 定价下报价差已不等于成交成本。
+  chapter: '3.2'
+  first_seen: Chapter 3
+- term: Realized spread
+  term_zh: 实现价差
+  pinyin: shi
+  brief: Twice the gap between the execution price and the quote midpoint five minutes later; the provider's
+    compensation once the price has moved.
+  brief_zh: 成交价与五分钟后报价中间价之差的两倍，是价格移动后流动性提供者实际留下的补偿。
+  detail: Effective minus realized approximates the order's price impact. O'Hara (2015) notes it is time-frame-dependent
+    and often negative in fast electronic markets.
+  detail_zh: 有效价差减实现价差近似等于该笔订单的价格冲击。O'Hara（2015）指出它依赖时间尺度，在高速电子市场常为负。
+  chapter: '3.2'
+  first_seen: Chapter 3
+- term: Roll's implicit spread
+  term_zh: 罗尔隐含价差
+  pinyin: luo
+  brief: A quote-free estimator of the effective bid-ask spread from the first-order serial covariance
+    of price changes, s = 2 sqrt(-cov).
+  brief_zh: 仅由价格变动的一阶序列协方差反推有效价差的免报价估计量，s = 2√(−cov)。
+  detail: It works because trading costs induce negative serial dependence; Roll (1984) reports 0.298
+    percent daily on CRSP 1963-1982, falling with firm size.
+  detail_zh: 之所以成立，是因为交易成本造成负的序列相关；Roll（1984）在 1963–1982 年 CRSP 上测得日均 0.298%，且随公司规模下降。
+  chapter: '3.2'
+  first_seen: Chapter 3
+- term: Adverse selection
+  term_zh: 逆向选择
+  pinyin: ni
+  brief: The risk that whoever trades with you does so because he knows something you do not, forcing
+    your quotes to break even against him.
+  brief_zh: 与你成交的人可能是因为知道你不知道的事，因此报价必须按其反推盈亏平衡。
+  detail: Glosten-Milgrom (1985) show that adverse selection alone creates a spread even for a risk-neutral,
+    competitive, zero-profit specialist.
+  detail_zh: Glosten–Milgrom（1985）证明，仅逆向选择一项就能撑出价差，即使专营商风险中性、面临竞争且零利润。
+  chapter: '3.3'
+  first_seen: Chapter 3
+- term: Kyle's lambda
+  term_zh: 凯尔 λ
+  pinyin: kai
+  brief: The slope of price on aggregate order flow in Kyle's model; the canonical linear price-impact
+    coefficient, whose reciprocal is market depth.
+  brief_zh: Kyle 模型中价格对总订单流的斜率，经典线性冲击系数，其倒数为市场深度。
+  detail: Half of (Sigma_0/sigma_u^2)^(1/2) in the single auction and the full value in the continuous
+    limit; it is the equilibrium microfoundation of permanent impact.
+  detail_zh: 单次拍卖中为 (Σ₀/σ_u²)^(1/2) 的一半，连续极限中为整个值；它是永久冲击的均衡微观基础。
+  chapter: '3.3'
+  first_seen: Chapter 3
+- term: Market depth
+  term_zh: 市场深度
+  pinyin: shi
+  brief: The order flow needed to move price by one unit; the reciprocal of Kyle's lambda, proportional
+    to noise trading over unresolved information.
+  brief_zh: 使价格变动一个单位所需的订单流，即 Kyle's lambda 的倒数，正比于噪声交易量除以未消化信息。
+  detail: In Kyle's continuous limit depth is constant over time, which is why prices end up as constant-volatility
+    Brownian motion.
+  detail_zh: 在 Kyle 连续极限中深度随时间恒定，价格因此成为常数波动率的布朗运动。
+  chapter: '3.3'
+  first_seen: Chapter 3
+- term: Instantaneous impact function
+  term_zh: 瞬时冲击函数
+  pinyin: shun
+  brief: Guéant's L(rho), the cost per unit of volume as a function of the participation rate; strictly
+    convex, with L(0)=0 and super-linear growth.
+  brief_zh: Guéant 的 L(ρ)，单位成交量成本关于参与率的函数；严格凸、偶、L(0)=0 且渐近超线性。
+  detail: In practice L(rho)=eta|rho|^(1+phi)+psi|rho|, nesting linear and square-root shapes; permanent
+    impact k is only a change of variables, so the modelling freedom is in L.
+  detail_zh: 实践中取 L(ρ)=η|ρ|^(1+φ)+ψ|ρ|，可涵盖线性与平方根形状；永久冲击 k 只是换元，自由度在 L 上。
+  chapter: '3.4'
+  first_seen: Chapter 3
+- term: Market resilience
+  term_zh: 市场弹性
+  pinyin: shi
+  brief: The speed with which prices recover after a random, uninformative shock; the reason temporary
+    impact is recoverable at all.
+  brief_zh: 价格在随机、无信息冲击后回复的速度，也是暂时冲击可以复原的原因。
+  detail: Bouchaud-Farmer-Lillo (2009) find the spread reverts with a power-law exponent of 0.4-0.5; order
+    flow is long-memory, so impact must be transient for prices to stay near martingales.
+  detail_zh: Bouchaud–Farmer–Lillo（2009）测得价差以 0.4–0.5 的幂律指数回复；订单流是长记忆的，冲击必须暂时化价格才能近似鞅。
+  chapter: '3.4'
+  first_seen: Chapter 3
+- term: Permanent impact
+  term_zh: 永久冲击
+  pinyin: yong
+  brief: The part of a trade's price movement that reflects released information and stays in the price;
+    it is not recoverable by waiting.
+  brief_zh: 冲击中反映信息释放、留在价格里的部分，等待也无法收回。
+  detail: Identified with lambda times net order flow; it is a public-information event, not a rent paid
+    to a liquidity provider.
+  detail_zh: 等于 λ 乘以净订单流；它是公共信息事件，而非付给流动性提供者的租金。
+  chapter: '3.4'
+  first_seen: Chapter 3
+- term: Square-root law
+  term_zh: 平方根律
+  pinyin: ping
+  brief: The empirical rule that the average price change of a metaorder scales as the square root of
+    its size relative to volume, times volatility.
+  brief_zh: 经验规律：母单的平均价格变动正比于其规模相对成交量之比的平方根乘以波动率。
+  detail: Written Delta = Y sigma (Q/V)^(1/2) with Y of order one; the exponent is more generally in 0.4-0.7,
+    and Zarinelli et al. (2015) find a logarithmic form fits better.
+  detail_zh: 写作 Δ = Yσ(Q/V)^(1/2)，Y 为 O(1) 量级；指数一般在 0.4–0.7，Zarinelli 等（2015）发现对数形式拟合更好。
+  chapter: '3.4'
+  first_seen: Chapter 3
+- term: Temporary impact
+  term_zh: 暂时冲击
+  pinyin: zan
+  brief: The part of a trade's price movement caused by exhausting resting liquidity; it decays as the
+    book refills, so slowing down reduces it.
+  brief_zh: 冲击中因耗尽挂单流动性导致的部分，随盘口回填而衰减，放慢节奏即可优化掉。
+  detail: Carried by a decaying kernel G(l) in the propagator model; with sign correlation ~ l^-gamma
+    the kernel must decay as l^-beta with beta = (1-gamma)/2.
+  detail_zh: 在传播模型中由衰减核 G(l) 承载；当符号相关为 l^-γ 时，核须按 l^-β 衰减，β=(1-γ)/2。
+  chapter: '3.4'
+  first_seen: Chapter 3
+- term: Market microstructure invariance
+  term_zh: 市场微观结构不变性
+  pinyin: shi
+  brief: The hypothesis that bet sizes and transaction costs are constant across assets once measured
+    per unit of business time.
+  brief_zh: 假设：按单位业务时间（每次下注到达）度量，跨资产的下注规模与交易成本是常量。
+  detail: Kyle-Obizhaeva (2016) derive bet count ~ W^(2/3) and an illiquidity index ~ (sigma^2/PV)^(1/3);
+    the square root is the only impact function that makes cost depend on Q/V alone.
+  detail_zh: Kyle–Obizhaeva（2016）导出下注笔数 ∝ W^(2/3)、非流动性指数 ∝ (σ²/PV)^(1/3)；平方根是唯一使成本只依赖 Q/V 的冲击函数。
+  chapter: '3.5'
+  first_seen: Chapter 3
+- term: Order flow imbalance
+  term_zh: 订单流失衡
+  pinyin: ding
+  brief: The net of buys and sells at the best quotes; over short intervals it, rather than volume, drives
+    the price change.
+  brief_zh: 最优价位上买卖的净差额；短时间尺度上驱动价格变动的是它而非成交量。
+  detail: Cont-Kukanov-Stoikov (2014) find a linear relation between order flow imbalance and price change,
+    with a slope inversely proportional to market depth.
+  detail_zh: Cont–Kukanov–Stoikov（2014）发现订单流失衡与价格变动呈线性关系，斜率与市场深度成反比。
+  chapter: '3.6'
+  first_seen: Chapter 3
+- term: Price discovery
+  term_zh: 价格发现
+  pinyin: jia
+  brief: The process by which bids, asks and trades converge on a new value by aggregating heterogeneous
+    beliefs; the outcome is unknown in advance.
+  brief_zh: 买卖报价与成交通过聚合彼此不同的信念收敛到新价值的过程，结果事先未知。
+  detail: Hasbrouck stresses that trading is required for it and that the fact and direction of a trade
+    enter the public information set even without news.
+  detail_zh: Hasbrouck 强调价格发现必须经由交易，且即使没有消息，成交的事实与方向也会进入公共信息集。
+  chapter: '3.6'
+  first_seen: Chapter 3
+- term: Arrival Price
+  term_zh: 到达价格
+  pinyin: dao
+  brief: The midquote at the instant an order is released to the desk; the benchmark used by implementation
+    shortfall algorithms.
+  brief_zh: 订单交给交易台那一刻的中间价，是到达价（实施差额）算法使用的基准。
+  chapter: '4.1'
+  first_seen: Chapter 4
+- term: Decision Price
+  term_zh: 决策价格
+  pinyin: jue
+  brief: The price, usually the midquote, prevailing when a manager decided to hold a position; the benchmark
+    for implementation shortfall.
+  brief_zh: 管理者决定建仓时的价格（通常取中间价），是实施差额的度量基准。
+  chapter: '4.1'
+  first_seen: Chapter 4
+- term: Implementation Shortfall
+  term_zh: 实施差额
+  pinyin: shi
+  brief: The gap between the paper portfolio valued at decision prices and the portfolio actually executed;
+    the standard measure of trading cost.
+  brief_zh: 决策价位下的纸上组合与实际成交组合之间的差额，是度量交易成本的标准指标。
+  detail: Coined by Perold (1988), whose original text this book did not obtain; the definition here is
+    reconstructed from secondary sources.
+  detail_zh: 由 Perold（1988）提出，本书未获取其原文，此处定义据二手文献重建。
+  chapter: '4.1'
+  first_seen: Chapter 4
+- term: Paper Portfolio
+  term_zh: 纸上组合
+  pinyin: zhi
+  brief: A hypothetical holding of the positions an investor decided to hold, taken at the decision-time
+    midquote with no costs.
+  brief_zh: 想象中按决策时中间价取得的全部目标持仓，不含佣金、价差与冲击。
+  chapter: '4.1'
+  first_seen: Chapter 4
+- term: Delay Cost
+  term_zh: 延迟成本
+  pinyin: yan
+  brief: The cost of price exposure between the decision instant and the release of the first trade.
+  brief_zh: 决策到首笔交易释放之间的价格暴露成本，等于成交量乘以该期间的价格变动。
+  chapter: '4.2'
+  first_seen: Chapter 4
+  detail: Hasbrouck splits implementation shortfall as price impact plus cost of delay, and reports Wagner's
+    (2003) estimate of institutional delay cost at 77 basis points.
+  detail_zh: Hasbrouck 把实施差额拆为价格冲击与延迟成本两项，并引 Wagner（2003）对机构延迟成本约 77 bp 的估计。
+- term: Opportunity Cost
+  term_zh: 机会成本
+  pinyin: ji
+  brief: The cost on the unexecuted remainder of an order, marked at the terminal price; zero only if
+    the order fills completely.
+  brief_zh: 未成交余量按期末价格计价的成本，只有完全成交时才为零。
+  chapter: '4.2'
+  first_seen: Chapter 4
+- term: Gamma Bridge
+  term_zh: 伽马桥
+  pinyin: jia
+  brief: A process used by Frei and Westray to model the relative intraday volume curve; empirically tractable
+    and independent of total volume.
+  brief_zh: Frei 与 Westray 用于刻画日内相对成交量曲线的过程，实证上可拟合且与总成交量无关。
+  chapter: '4.4'
+  first_seen: Chapter 4
+  detail: Frei–Westray (2015) use it to solve the VWAP-targeting problem in closed form; the optimal rate
+    splits into a deterministic TWAP component plus an adjustment driven by the observed volume curve.
+  detail_zh: Frei–Westray（2015）用它闭式求解 VWAP 追踪问题；最优速率分解为确定性 TWAP 分量加上由观测成交量曲线驱动的调整。
+- term: Guaranteed VWAP
+  term_zh: 保证成交均价
+  pinyin: bao
+  brief: A contract in which a broker promises the period VWAP for a client order, charging a premium
+    equal to the indifference price.
+  brief_zh: 经纪商承诺按当期 VWAP 交付客户订单的合约，其溢价等于该义务的无差异价格。
+  chapter: '4.4'
+  first_seen: Chapter 4
+- term: Percentage of Volume
+  term_zh: 参与率
+  pinyin: can
+  brief: A strategy trading a constant fraction of market volume, so the horizon is implied; its optimal
+    rate has a closed form in Guéant's model.
+  brief_zh: POV 策略按市场成交量的固定比例成交，期限由此隐含；其最优比率在 Guéant 模型中有闭式解。
+  chapter: '4.4'
+  first_seen: Chapter 4
+- term: Volume-Weighted Average Price
+  term_zh: 成交量加权平均价
+  pinyin: cheng
+  brief: The average price weighted by volume traded at each price over a period; an execution benchmark
+    that can be influenced.
+  brief_zh: 按各价位成交量加权的期间均价，作为执行基准可被前倾下单所影响。
+  chapter: '4.4'
+  first_seen: Chapter 4
+- term: Target Close
+  term_zh: 目标收盘
+  pinyin: mu
+  brief: Execution benchmarked on the closing price, with a fixed end and an unknown start; the mirror
+    image of implementation shortfall.
+  brief_zh: 以收盘价为基准的执行方式，终点固定、起点未知，是实施差额的镜像。
+  chapter: '4.5'
+  first_seen: Chapter 4
+- term: Transaction Cost Analysis
+  term_zh: 交易成本分析
+  pinyin: jiao
+  brief: The measurement loop around execution, covering pre-trade forecasting, post-trade attribution,
+    benchmark choice and significance testing.
+  brief_zh: 围绕执行的度量闭环：事前成本预估、事后分项归因、基准选择与统计显著性。
+  chapter: '4.7'
+  first_seen: Chapter 4
+- term: Efficient frontier
+  term_zh: 有效前沿
+  pinyin: you
+  brief: The family of schedules with minimum expected cost at each level of cost variance, traced out
+    as the risk-aversion parameter varies.
+  brief_zh: 在每个成本方差水平下期望成本最小的一族调度，随风险厌恶参数变动扫出的曲线。
+  detail: For execution it is a smooth convex curve whose minimum is the naive strategy; its curvature
+    there measures the security's liquidity. Solving min E(x)+lambda*V(x) for a range of lambda reproduces
+    the same family.
+  detail_zh: 在执行为题中是一条光滑凸曲线，极小点为 naïve 策略，该处曲率度量证券流动性。对一系列 λ 求解 min E(x)+λV(x) 即可重现该族。
+  chapter: '5'
+  first_seen: Chapter 5
+- term: Half-life of a trade
+  term_zh: 交易的半衰期
+  pinyin: jiao
+  brief: The time theta=1/kappa in which the position decays by a factor e, set only by liquidity, volatility
+    and risk aversion, not by the horizon.
+  brief_zh: 头寸衰减到 1/e 所需的时间 θ=1/κ，只由流动性、波动率和风险厌恶决定，与期限无关。
+  detail: It is the intrinsic execution time of the trade — even with no deadline a risk-averse trader
+    liquidates on the scale theta. The ratio kappa*T=T/theta says which force dominates small values giving
+    linear liquidation, large values giving immediate liquidation.
+  detail_zh: 它是交易的内在时间尺度：即使没有截止时间，风险厌恶者仍以 θ 为尺度清算。比值 κT=T/θ 表明主导力量：很小趋向线性清算，很大趋向立即清算。
+  chapter: '5'
+  first_seen: Chapter 5
+- term: Hyperbolic-sine trajectory
+  term_zh: 双曲正弦轨迹
+  pinyin: shuang
+  brief: The closed-form optimal holdings path x(t)=X*sinh(kappa(T-t))/sinh(kappa*T) obtained under linear
+    impact.
+  brief_zh: 线性冲击下最优持仓路径的闭式解 x(t)=X·sinh(κ(T−t))/sinh(κT)。
+  detail: It solves the difference equation (1/tau^2)(x_{j-1}-2x_j+x_{j+1})=kappa^2*x_j, falls monotonically
+    from X to zero, and never repurchases; kappa=sqrt(lambda*sigma^2/eta) in the continuous-time limit.
+  detail_zh: 它是差分方程 (1/τ²)(x_{j−1}−2x_j+x_{j+1})=κ²x_j 的解，从 X 单调降到零且从不回购；连续时间极限下 κ=√(λσ²/η)。
+  chapter: '5'
+  first_seen: Chapter 5
+- term: Liquidity-adjusted Value at Risk
+  term_zh: 流动性调整 VaR
+  pinyin: liu
+  brief: L-VaR, the smallest value at risk VaR_p(x)=lambda_v*sqrt(V(x))+E(x) attainable by any static
+    liquidation strategy over a given horizon.
+  brief_zh: 即 L-VaR，给定期限下任一静态清算策略所能达到的最小风险价值 VaR_p(x)=λ_v·√(V(x))+E(x)。
+  chapter: '5'
+  first_seen: Chapter 5
+- term: Naive strategy
+  term_zh: 平均切分策略（naïve 策略）
+  pinyin: ping
+  brief: The equal-split schedule that trades equal slices over equal intervals, minimising expected cost
+    when risk is ignored.
+  brief_zh: 等量、等间隔切分的调度，在忽略风险时使期望成本最小。
+  detail: It is the minimum of the Almgren–Chriss efficient frontier; Bertsimas and Lo prove it optimal
+    only under a linear permanent-impact arithmetic random walk. Because the frontier is flat there, a
+    risk-averse trader should never use it.
+  detail_zh: 它是 Almgren–Chriss 有效前沿的极小点；Bertsimas 与 Lo 证明它仅在"线性永久冲击 + 算术随机游走"下最优。由于前沿在那点平坦，风险厌恶者不应采用它。
+  chapter: '5'
+  first_seen: Chapter 5
+- term: Quadratic cost model
+  term_zh: 二次成本模型
+  pinyin: er
+  brief: The name for the linear-impact model, because trading n units in one interval costs epsilon*|n|+(eta/tau)*n^2,
+    quadratic in the slice size.
+  brief_zh: 线性冲击模型的别名：单区间成交 n 单位的成本为 ε|n|+(η/τ)n²，对切片大小是二次的。
+  chapter: '5'
+  first_seen: Chapter 5
+- term: Risk-aversion parameter
+  term_zh: 风险厌恶参数
+  pinyin: feng
+  brief: The multiplier lambda in the objective E(x)+lambda*V(x), measuring how heavily cost variance
+    is penalised relative to expected cost.
+  brief_zh: 目标函数 E(x)+λV(x) 中的乘子 λ，衡量成本方差相对期望成本被惩罚的重度。
+  detail: It is the Lagrange multiplier of the constrained problem min E s.t. V<=V*, the curvature of
+    a smooth concave utility function, and it fixes where on the efficient frontier the trader sits. Lambda=0
+    is the risk-neutral special case.
+  detail_zh: 它是约束问题 min E s.t. V≤V* 的拉格朗日乘子，也是光滑凹效用函数的曲率，决定交易者落在有效前沿的位置。λ=0 即风险中性特例。
+  chapter: '5'
+  first_seen: Chapter 5
+- term: Trading trajectory
+  term_zh: 交易轨迹
+  pinyin: jiao
+  brief: The sequence of holdings x_0,...,x_N from the initial block X down to zero at the horizon, equivalently
+    described by the trade list n_k.
+  brief_zh: 从初始头寸 X 到期限时归零的持仓序列 x_0,…,x_N，等价地由交易清单 n_k 描述。
+  chapter: '5'
+  first_seen: Chapter 5
+- term: Trading-enhanced risk
+  term_zh: 交易放大的风险
+  pinyin: jiao
+  brief: The part of execution-cost variance that grows with trade size itself, because large trades are
+    more exposed to uncertain liquidity.
+  brief_zh: 随交易规模本身增大的执行成本方差，因为大单更易遭遇不确定的流动性。
+  detail: Almgren (2003) adds a random component h(V)*xi to temporary impact, which puts the term sum
+    V^2 h(V)^2 into the variance of terminal wealth and slows the optimal schedule.
+  detail_zh: Almgren（2003）给临时冲击加上随机分量 h(V)*xi，使期末财富方差多出 sum V^2 h(V)^2 一项，从而让最优调度变慢。
+  chapter: '6.2'
+  first_seen: Chapter 6
+- term: Resilience
+  term_zh: 复原速度
+  pinyin: fu
+  brief: How fast new limit orders replenish the gap a trade tore in the book, i.e. the decay rate of
+    the ask price to its steady state.
+  brief_zh: 新挂单补回交易造成的订单簿缺口的快慢，表现为卖一回到稳态的衰减速率。
+  detail: Obizhaeva–Wang write it as rho in the ask-price deviation term. It, not the static impact coefficient,
+    governs the optimal schedule, and rho to 0 gives pure block trading while rho to infinity recovers
+    the continuous Almgren–Chriss flow.
+  detail_zh: Obizhaeva–Wang 用 rho 表示卖一偏离项的衰减率。决定最优调度的是它而非静态冲击系数：rho 趋于 0 退化为纯集中成交，趋于无穷则回到 AC 的连续流。
+  chapter: '6.4'
+  first_seen: Chapter 6
+- term: Price manipulation
+  term_zh: 价格操纵
+  pinyin: jia
+  brief: A round trip that starts from zero inventory, trades back and forth, and ends at zero inventory
+    with a positive expected profit.
+  brief_zh: 从零头寸出发、来回交易、最终回到零头寸却获得正期望利润的回路。
+  detail: Its absence is the standard no-arbitrage condition in limit-order-book models. Gatheral's theorem
+    shows linear permanent impact is the only manipulation-free constant-coefficient specification; Guéant
+    recovers non-linearity by making the microscopic impact depend on volume already executed.
+  detail_zh: 其不存在是限价订单簿模型的标准无套利条件。Gatheral 定理说明线性永久冲击是唯一不产生操纵的常系数设定；Guéant 让微观冲击依赖已成交累计量，从而在无套利下恢复非线性。
+  chapter: '6.5'
+  first_seen: Chapter 6
+- term: Transient price impact
+  term_zh: 瞬态冲击
+  pinyin: shun
+  brief: Price impact that is strongest immediately after a trade and then decays, rather than persisting
+    as a permanent shift of the price.
+  brief_zh: 交易刚发生时最强、随后逐渐衰减的冲击，而非永久地移动价格。
+  detail: It replaces the Almgren–Chriss split into permanent plus instantaneous impact. Lorenz–Schied
+    show that under transient impact the optimal strategy depends on the derivative of the drift, making
+    it far more fragile than under Almgren–Chriss.
+  detail_zh: 它取代 AC 的"永久冲击 + 瞬时冲击"二分。Lorenz–Schied 证明瞬态冲击下最优策略依赖漂移的导数，稳健性因此远不如 AC 框架。
+  chapter: '6.5'
+  first_seen: Chapter 6
+- term: Volume effect process
+  term_zh: 成交量效应过程
+  pinyin: cheng
+  brief: The part of a trade that is still visible in the limit order book and decays as the book recovers,
+    driving the current ask price.
+  brief_zh: 交易仍留在订单簿上、随簿面恢复而衰减的那部分，决定当前卖一价。
+  detail: Predoiu–Shaikhet–Shreve model it as E_t = X_t minus the integral of the recovery rate h(E_s);
+    the ask price is the shadow price plus psi(E_t), with psi the inverse of the book's cumulative depth.
+  detail_zh: Predoiu–Shaikhet–Shreve 把它写成 E_t = X_t 减去恢复速率 h(E_s) 的积分；卖一为影子价加上 psi(E_t)，psi 是簿面累计深度的逆函数。
+  chapter: '6.5'
+  first_seen: Chapter 6
+- term: Indifference pricing
+  term_zh: 无差异定价
+  pinyin: wu
+  brief: Pricing a block by the cash amount that leaves the agent indifferent between accepting it and
+    not, given that the block must be liquidated.
+  brief_zh: 以使交易者在接手与不接手之间无差异的现金额来定价块交易，前提是该头寸必须被清掉。
+  detail: Guéant (2015) derives P = q*S minus the permanent-impact integral minus linear fees minus the
+    optimised cost of risk and impact; the last term is the part trading well can reduce, i.e. the liquidity
+    premium.
+  detail_zh: Guéant（2015）得出 P = q*S 减永久冲击积分、减线性费用、减优化后的风险与冲击成本；最后一项是"交易得好"能削减的部分，即流动性溢价。
+  chapter: '6.6'
+  first_seen: Chapter 6
+- term: Aggressive in the money
+  term_zh: 随盈利而激进
+  pinyin: sui
+  brief: Selling faster when the price moves favourably, i.e. when the position is in the money relative
+    to the arrival price.
+  brief_zh: 价格朝有利方向变动、头寸相对到达价处于盈利时卖得更快。
+  detail: Gatheral–Schied's closed-form strategy is aggressive in the money yet independent of volatility.
+    Schied–Schöneborn show a utility maximiser is aggressive in the money exactly when absolute risk aversion
+    is increasing; under CARA the optimal strategy is deterministic.
+  detail_zh: Gatheral–Schied 的闭式策略随盈利而激进，却与波动率无关。Schied–Schöneborn 说明效用最大化者随盈利而激进，当且仅当绝对风险厌恶递增；CARA 下最优策略是确定性的。
+  chapter: '6.7'
+  first_seen: Chapter 6
+- term: Mean-quadratic variation
+  term_zh: 均值–二次变差
+  pinyin: jun
+  brief: A time-consistent objective penalising expected cost, the running inventory squared, and the
+    quadratic variation of the strategy.
+  brief_zh: 时间一致的执行目标：惩罚期望成本、持仓平方的积分，以及策略的二次变差。
+  detail: Forsyth, Kennedy, Tse and Windcliff (2012) show its exact arithmetic-Brownian optimum coincides
+    with the static Almgren–Chriss solution, which explains why the deterministic sinh schedule works
+    so well.
+  detail_zh: Forsyth、Kennedy、Tse 与 Windcliff（2012）证明它在算术布朗运动下的精确最优解与静态 AC 解重合，这解释了确定性 sinh 调度为何如此有效。
+  chapter: '6.7'
+  first_seen: Chapter 6
+- term: Pre-commitment
+  term_zh: 预承诺
+  pinyin: yu
+  brief: Solving a mean-variance objective evaluated at the initial time, then committing to that policy
+    even though it is no longer optimal later.
+  brief_zh: 按初始时刻衡量的均值–方差目标求解，然后照此执行，即便它在之后已不再最优。
+  detail: It is the standard repair for the time-inconsistency of the mean-variance criterion; Forsyth
+    (2011) solves it numerically as a non-linear HJB equation and notes it is optimal only in the averaged
+    sense over many identical trades.
+  detail_zh: 这是对均值–方差准则时间不一致的标准补救；Forsyth（2011）用非线性 HJB 方程数值求解，并指出它只在大量同质交易的平均意义下最优。
+  chapter: '6.7'
+  first_seen: Chapter 6
+- term: Time inconsistency
+  term_zh: 时间不一致
+  pinyin: shi
+  brief: A criterion whose optimal policy at one date is no longer optimal later under unchanged conditions,
+    so dynamic programming does not apply.
+  brief_zh: 在某一时点算出的最优策略过后不再最优（即便条件未变），因此不能直接用动态规划。
+  detail: The mean-variance criterion is time-inconsistent because its variance term contains a squared
+    expectation. Mean-quadratic-variation (Forsyth et al. 2012) and expected-utility objectives (Schied–Schöneborn
+    2009) are time-consistent alternatives.
+  detail_zh: 均值–方差准则因方差项含期望的平方而时间不一致。均值–二次变差（Forsyth 等 2012）与期望效用目标（Schied–Schöneborn 2009）是时间一致的替代。
+  chapter: '6.7'
+  first_seen: Chapter 6
+- term: Inventory risk
+  term_zh: 库存风险
+  pinyin: ku
+  brief: The risk a liquidity provider bears because fills leave it holding a position whose price may
+    move before it can be unwound.
+  brief_zh: 成交后持有头寸、在平掉之前价格可能不利变动而承担的风险。
+  detail: It enters the spread through the maker's risk aversion and volatility, and it is what makes
+    optimal quotes widen and shift against the position.
+  detail_zh: 它通过风险厌恶与波动率进入价差，也是最优报价变宽、并逆持仓偏移的原因。
+  chapter: '7.1'
+  first_seen: Chapter 7
+- term: Market making
+  term_zh: 做市
+  pinyin: zuo
+  brief: Quoting both a bid and an ask around a reference price and earning the spread, while carrying
+    the inventory risk the fills create.
+  brief_zh: 在参考价两侧同时报价、赚取价差，并承担成交带来的库存风险。
+  detail: In the stochastic-control formulation the market maker controls the two quote distances, not
+    a trading rate; the objective is expected utility of terminal mark-to-market wealth.
+  detail_zh: 在随机控制表述里，做市商控制的是两个报价距离而非交易速率，目标是期末盯市财富的期望效用。
+  chapter: '7.1'
+  first_seen: Chapter 7
+- term: Fill intensity
+  term_zh: 成交强度
+  pinyin: cheng
+  brief: The Poisson rate at which a resting quote is executed, a decreasing function of the quote's distance
+    from the mid-price.
+  brief_zh: 挂单被成交的泊松速率，是报价离中间价距离的递减函数。
+  detail: Avellaneda–Stoikov assume the exponential form A*exp(-k*delta), where A is the intensity at
+    zero distance and k the price-decay rate; Cont–Stoikov–Talreja derive fill probabilities from the
+    book state instead of assuming them.
+  detail_zh: Avellaneda–Stoikov 取指数形式 A*exp(-k*delta)；Cont–Stoikov–Talreja 则从簿状态算出成交概率而非直接假设。
+  chapter: '7.2'
+  first_seen: Chapter 7
+- term: Inventory skew
+  term_zh: 库存偏移
+  pinyin: ku
+  brief: The shift of the quoted mid away from the market mid because of the maker's inventory, equal
+    to the reservation price minus the mid.
+  brief_zh: 因持仓而使报价中心偏离市场中间价的量，即保留价格减去中间价。
+  detail: With exponential fill intensities the whole spread stays inventory-independent and the skew
+    carries all the inventory information.
+  detail_zh: 在指数成交强度下总价差与库存无关，库存信息全部由偏移承载。
+  chapter: '7.2'
+  first_seen: Chapter 7
+- term: Reservation price
+  term_zh: 保留价格
+  pinyin: bao
+  brief: The mid-price adjusted for the maker's inventory, at which the maker is indifferent about quoting;
+    also called the indifference price.
+  brief_zh: 按持仓调整后的中间价，做市商在这一点上对是否报价无差异，又称无差异价格。
+  detail: Avellaneda–Stoikov give it in closed form as r(s,q,t)=s-q*gamma*sigma^2*(T-t); a long inventory
+    quotes below the mid and a short inventory above it, and the adjustment vanishes as the horizon approaches.
+  detail_zh: Avellaneda–Stoikov 给出闭式 r(s,q,t)=s-q*gamma*sigma^2*(T-t)：多头报在中间价之下、空头报在其上，且随到期临近趋于零。
+  chapter: '7.2'
+  first_seen: Chapter 7
+- term: HJB quasi-variational inequality
+  term_zh: 拟变分不等式
+  pinyin: ni
+  brief: The dynamic-programming equation for a mixed regular and impulse control problem, the minimum
+    of a running equation and an impulse term.
+  brief_zh: 正则与脉冲混合控制问题的动态规划方程，写成"运行方程与脉冲条件取最小"的形式。
+  detail: It is needed when one control acts continuously and another at isolated stopping times, as with
+    limit orders and market orders; ordinary HJB cannot represent the impulse channel.
+  detail_zh: 当一种控制连续施加、另一种只在孤立停时施加时（如限价单与市价单），普通 HJB 无法表示脉冲渠道，必须用拟变分不等式。
+  chapter: '7.5'
+  first_seen: Chapter 7
+- term: Impulse control
+  term_zh: 脉冲控制
+  pinyin: mai
+  brief: A control that acts at isolated stopping times, moving the state by a discrete jump rather than
+    continuously.
+  brief_zh: 在孤立停时施加的控制，使状态发生离散跳跃而非连续变化。
+  detail: 'Sending a market order is an impulse control: it is instantaneous and moves inventory and cash
+    by a discrete amount, at a cost equal to the half-spread plus a fee.'
+  detail_zh: 发市价单是脉冲控制：它瞬时发生，使库存与现金离散跳变，成本为半个价差加手续费。
+  chapter: '7.5'
+  first_seen: Chapter 7
+- term: Alpha signal
+  term_zh: alpha 信号
+  pinyin: xin
+  brief: A short-horizon predictor of the direction of the next price move, driven by order flow or imbalance,
+    used to skew quotes or time trades.
+  brief_zh: 对下一次价格变动方向的短周期预测，由订单流或失衡驱动，用来偏移报价或择时交易。
+  detail: Lehalle–Neuman model it as a Markovian signal and Cartea–Wang as momentum driven by market orders;
+    in both the optimal quote reacts to it, and a large enough signal turns the maker into a taker.
+  detail_zh: Lehalle–Neuman 把它建为马尔可夫信号，Cartea–Wang 把它建为由市价单驱动的动量；两者中信号都进入最优报价，信号足够大时做市商转为吃单者。
+  chapter: '7.6'
+  first_seen: Chapter 7
+- term: Latency cost
+  term_zh: 延迟成本
+  pinyin: yan
+  brief: The value lost by reacting slowly, equal to the optimal value with immediate response minus the
+    value achievable at a given latency.
+  brief_zh: 反应慢所损失的价值，等于即时反应的最优值减去给定延迟下可达的值。
+  detail: Lehalle–Mounjid measure it as the difference in value between an agent and a slower one whose
+    control can change only every tau book updates, and read it as the maximum a trader should pay for
+    speed.
+  detail_zh: Lehalle–Mounjid 用"每 tau 次簿更新才能改单"的慢代理与正常代理的值之差来衡量，并把它读作交易者应为速度支付的最高代价。
+  chapter: '7.8'
+  first_seen: Chapter 7
+- term: Microprice
+  term_zh: 微价格
+  pinyin: wei
+  brief: The expected long-run price conditional on the current order-book imbalance, used as the benchmark
+    when placing a limit order.
+  brief_zh: 给定当前订单簿失衡下的长期预期价格，用作挂限价单时的比较基准。
+  detail: Lehalle–Mounjid define it as the limit of the imbalance-conditional expectation of the price;
+    comparing it with the execution price encodes adverse-selection aversion.
+  detail_zh: Lehalle–Mounjid 把它定义为失衡条件下价格期望的极限；与成交价比较即可编码逆向选择厌恶。
+  chapter: '7.8'
+  first_seen: Chapter 7
+- term: Effective rebate
+  term_zh: 有效返佣
+  pinyin: you
+  brief: The exchange's limit-order rebate less a venue-specific penalty for adverse selection, the net
+    figure that a passive fill actually earns.
+  brief_zh: 交易所返佣减去该场所的逆向选择惩罚后的净收益。
+  detail: Written $r_k=r_k^{e}+AS_k$ in Cont and Kukanov (2017), where $AS_k$ is typically estimated as
+    average returns over a short interval after a limit-order execution.
+  detail_zh: 在 Cont–Kukanov 模型中记作 $r_k=r_k^{e}+AS_k$，$AS_k$ 通常用限价单成交后短窗口的平均收益估计。
+  chapter: '8.1'
+  first_seen: Chapter 8
+- term: Hidden order
+  term_zh: 隐藏单
+  pinyin: yin
+  brief: A limit order whose size is not displayed at all, so its whole size stays off the visible book,
+    at the cost of time priority.
+  brief_zh: 完全不显示数量的限价单，整个数量不进入可见订单簿。
+  detail: Hidden orders lose time priority to displayed orders at the same price on most venues. Empirical
+    work shows they are used both to conceal large size and, by high-frequency traders, to undercut standing
+    quotes and time volatility.
+  detail_zh: 隐藏单在多数场所同价位让位于显示单；实证显示它既用于隐藏大额规模，也被高频交易者用于抢单降价与择时。
+  chapter: '8.1'
+  first_seen: Chapter 8
+- term: Iceberg order
+  term_zh: 冰山单
+  pinyin: bing
+  brief: A limit order that displays only a small peak size, refreshing a new peak from the hidden part
+    each time a displayed peak executes.
+  brief_zh: 只显示小部分峰量、其余隐藏，峰量成交后自动补出新峰的限价单。
+  detail: Also called an undisclosed order. Because it must refresh, an iceberg leaves a detectable signature,
+    and its displayed part outranks nothing at the same price on venues that give display priority.
+  detail_zh: 在实行"显示优先"的场所，冰山单的显示部分在同一价位并不享受优先；反复补峰使其可被识别。
+  chapter: '8.1'
+  first_seen: Chapter 8
+- term: Queue position
+  term_zh: 队列位置
+  pinyin: dui
+  brief: An order's rank in the FIFO queue at its price. It sets both the probability of being filled
+    and the adverse selection borne when filled.
+  brief_zh: 订单在其价位先进先出队列中的排位，决定成交概率与被逆向选择的程度。
+  detail: 'Moallemi and Yuan (2016) value it as $V(q,\delta)=\alpha(q)\delta-\beta(q)$: fill probability
+    times liquidity premium minus adverse-selection cost, all functions of queue position.'
+  detail_zh: Moallemi–Yuan 把它写成 $V(q,\delta)=\alpha(q)\delta-\beta(q)$，即成交概率乘流动性溢价减去逆向选择成本。
+  chapter: '8.3'
+  first_seen: Chapter 8
+- term: Order book imbalance
+  term_zh: 订单簿不平衡
+  pinyin: ding
+  brief: The ratio of visible bid-side to ask-side liquidity at the best quotes, widely used as a short-horizon
+    predictor of price and flow.
+  brief_zh: 最优报价处可见买卖流动性的比例，常作为短期价格与流量的预测指标。
+  detail: In Cebiroğlu and Horst (2011) it is the single channel through which a display decision affects
+    the book, so the optimal display size trades time priority against the imbalance it creates.
+  detail_zh: 在 Cebiroğlu–Horst 模型中它是显示决策影响市场的唯一渠道，最优显示量在时间优先与所造成的不平衡之间取舍。
+  chapter: '8.4'
+  first_seen: Chapter 8
+- term: Picking-off risk
+  term_zh: 被抢单风险
+  pinyin: bei
+  brief: The option value fast traders hold against a resting displayed order, which they can hit before
+    it is cancelled.
+  brief_zh: 显示中的挂单在撤单前被快速交易者利用过时报价抢先成交的风险。
+  detail: 'Buti and Rindi (2009) show it is a distinct reason to hide: once fast traders are modelled,
+    hidden orders become optimal at both decision nodes, placed at the second level of the book.'
+  detail_zh: Buti–Rindi 表明引入快速交易者后，隐藏单在两个决策节点都成为均衡策略，且挂在第二档。
+  chapter: '8.4'
+  first_seen: Chapter 8
+- term: Dark pool
+  term_zh: 暗池
+  pinyin: an
+  brief: A non-displayed trading venue that matches orders without publishing quotes, usually at the midpoint
+    of the lit market.
+  brief_zh: 不公开报价、通常按公开市场中间价撮合的非显示交易场所。
+  detail: Zhu (2014) shows that adding a dark pool can raise the exchange spread yet improve price discovery,
+    because informed orders cluster on the heavy side and face lower fill probability in the dark.
+  detail_zh: Zhu 表明加入暗池可能抬高价差却改善价格发现，因为知情单方向一致、在暗池中成交概率更低。
+  chapter: '8.5'
+  first_seen: Chapter 8
+- term: Predatory trading
+  term_zh: 掠夺性交易
+  pinyin: lue
+  brief: Front-running a trader whose liquidation need is observable, selling alongside them and buying
+    back once they have pushed the price down.
+  brief_zh: 针对可观测的清算需求抢跑，同向卖出后在其压低价格后买回。
+  detail: Brunnermeier and Pedersen (2005) show the resulting price overshoot makes the distressed trader's
+    excess cost equal to the predator's profit, and argue against strict disclosure of positions.
+  detail_zh: Brunnermeier–Pedersen 证明由此产生的价格过冲使困境者的超额成本等于掠夺者利润，并据此反对严格披露持仓。
+  chapter: '8.6'
+  first_seen: Chapter 8
+- term: Split order
+  term_zh: 拆单
+  pinyin: chai
+  brief: A large order broken into smaller pieces to conceal intent; Stenfors and Susai define it as same-price
+    orders sent within 0.1 seconds.
+  brief_zh: 把大单拆成小单以隐藏意图；Stenfors–Susai 定义为 0.1 秒内同价提交的成对限价单。
+  detail: About 17.42% of EBS EUR/USD limit orders meet this rule. Splitting is detected and, for a given
+    size, triggers more liquidity withdrawal than equivalent human-sized orders.
+  detail_zh: EBS 上约 17.42% 的 EUR/USD 限价单满足该规则；拆单会被识破，并在同等规模下引发更多流动性撤回。
+  chapter: '8.6'
+  first_seen: Chapter 8
+- term: VPIN
+  term_zh: 成交量同步的知情交易概率
+  pinyin: cheng
+  brief: A real-time, volume-time measure of order-flow toxicity computed as average absolute buy-sell
+    imbalance per volume bucket.
+  brief_zh: 按成交量时间计算的订单流毒性实时指标，取各成交量桶买卖失衡绝对值的均值。
+  detail: Defined by Easley, López de Prado and O'Hara (2012) as $\text{VPIN}=\sum_\tau|V_\tau^S-V_\tau^B|/(nV)$,
+    with $V$ one-fiftieth of daily volume and $n=50$ buckets in the baseline.
+  detail_zh: 定义见 Easley–López de Prado–O'Hara，基线取 $V$ 为日均量 1/50、$n=50$ 个桶。
+  chapter: '8.6'
+  first_seen: Chapter 8
+- term: Market fragmentation
+  term_zh: 市场碎片化
+  pinyin: shi
+  brief: The dispersal of one security's trading across many venues; it must be split into dispersal among
+    lit venues and the lit-versus-dark divide.
+  brief_zh: 同一标的的交易分散在多个场所，且需区分明牌场所之间的分散与明暗之比。
+  detail: The SEC staff review treats visible fragmentation and dark fragmentation as distinct phenomena
+    with different empirical signatures (SEC 2013).
+  detail_zh: SEC 工作人员综述把"可见碎片化"与"暗碎片化"视为特征不同的两种现象（SEC 2013）。
+  chapter: '9.1'
+  first_seen: Chapter 9
+- term: Access fee
+  term_zh: 接入费
+  pinyin: jie
+  brief: The fee for hitting a venue's protected quotations, capped by Rule 610 at USD 0.003 per share
+    so displayed prices stay close to true.
+  brief_zh: 交易中心对访问其受保护报价收取的费用，Rule 610 将上限定为每股 USD 0.003，以使显示价接近真实价格。
+  detail: The cap is what lets a router compare displayed prices across venues. Where the quotation is
+    below USD 1.00, the fee cannot exceed 0.3% of the quotation price.
+  detail_zh: 正是这个上限让路由器可以跨场所比较显示价；报价低于 USD 1.00 时，费用不得超过报价的 0.3%。
+  chapter: '9.2'
+  first_seen: Chapter 9
+- term: Intermarket sweep order
+  term_zh: 跨市场扫单
+  pinyin: kua
+  brief: A limit order marked as a sweep and sent with orders covering all better protected quotations,
+    so it may execute without regard to them.
+  brief_zh: 被标记为扫单并同时发出其他指令以覆盖全部更优受保护报价的限价单，接收方可立即执行而无须顾及那些报价。
+  detail: Defined in Rule 600(b)(30) and permitted by Rule 611(b)(5); it is the standard compliance mechanism
+    for taking liquidity across several venues at once.
+  detail_zh: 定义见 Rule 600(b)(30)，许可见 Rule 611(b)(5)；它是在多个场所同时取用流动性的标准合规机制。
+  chapter: '9.2'
+  first_seen: Chapter 9
+- term: National best bid and offer
+  term_zh: 全国最优买卖报价
+  pinyin: quan
+  brief: The best protected bid and offer across all automated trading centers (NBBO), the reference price
+    for price protection.
+  brief_zh: 全部自动化交易中心中最优的受保护买价与卖价，简称 NBBO，是价格保护的参照。
+  detail: Only one accessible best bid and offer per venue family is protected, so the NBBO is built from
+    a small number of quotations rather than the whole consolidated book.
+  detail_zh: 每个场所家族只有一条可访问的最优买卖价受保护，因此 NBBO 由少数几条报价构成，而非整本合并订单簿。
+  chapter: '9.2'
+  first_seen: Chapter 9
+- term: Protected quotation
+  term_zh: 受保护报价
+  pinyin: shou
+  brief: A quote that is automated, shown by an automated trading center and is a venue family's best
+    bid or offer; only these Rule 611 shields.
+  brief_zh: 同时是自动化报价、由自动化交易中心显示、且为该场所家族最优买卖价的报价，只有它受 Rule 611 保护。
+  detail: Rule 600(b)(57) sets the three elements. A quotation that fails the automation tests of Rule
+    600(b)(3) is a manual quotation and receives no protection.
+  detail_zh: Rule 600(b)(57) 规定三个要件；不符合 Rule 600(b)(3) 自动化要求的为人工报价，不受保护。
+  chapter: '9.2'
+  first_seen: Chapter 9
+- term: Smart order routing
+  term_zh: 智能订单路由
+  pinyin: zhi
+  brief: Automated consolidation of several venues' quotes and optimisation of how a parent order splits
+    across them in price, fee and fill odds.
+  brief_zh: 自动整合多个场所的报价，并在价格、费率与成交概率之间优化母单的跨场所拆分。
+  detail: In Foucault and Menkveld (2008) the share of brokers who are smart routers determines whether
+    an entrant venue can survive at all, so routing technology is a condition of venue entry.
+  detail_zh: 在 Foucault–Menkveld (2008) 中，智能路由券商的比例决定新场所能否存活，因此路由技术是场所进入的前提条件。
+  chapter: '9.3'
+  first_seen: Chapter 9
+- term: Inverted fee venue
+  term_zh: 反向费率场所
+  pinyin: fan
+  brief: A venue that reverses maker-taker pricing, charging for providing liquidity and paying a rebate
+    to remove it.
+  brief_zh: 把挂单—吃单定价颠倒过来的场所：对提供流动性收费，对移除流动性付返佣。
+  detail: Because the penny grid bars passing the rebate through as a better quoted price, inverted venues
+    compete by creating a finer effective pricing grid inside the spread, which raised their market share
+    from 15% to 28% in the 2016 Tick Size Pilot trade-at group.
+  detail_zh: 由于整数分格不允许把返佣表达为更优报价，反向场所靠在价差内部造出更细的有效网格竞争；在 2016 年分格试点中，trade-at 组的反向场所份额从 15% 升至 28%。
+  chapter: '9.4'
+  first_seen: Chapter 9
+- term: Maker-taker pricing
+  term_zh: 挂单—吃单定价
+  pinyin: gua
+  brief: An exchange model paying a rebate to resting limit orders and charging more to liquidity-removing
+    orders, keeping the difference.
+  brief_zh: 交易所对挂单返还佣金、对吃单收取更高费用的定价模式，差额由交易所留存。
+  detail: On the Nasdaq schedule Hasbrouck records, a visible resting order earns USD 0.0029 per share
+    and a taker pays USD 0.0030, so an identical quoted price is not an identical net price across venues.
+  detail_zh: 按 Hasbrouck 记录的纳斯达克价目表，显示挂单每股得 USD 0.0029、吃单付 USD 0.0030，因此相同报价在不同场所并非相同净价。
+  chapter: '9.4'
+  first_seen: Chapter 9
+- term: Payment for order flow
+  term_zh: 订单流付费
+  pinyin: ding
+  brief: A payment from a wholesaler to a broker in exchange for routing customer orders to it, permitted
+    by the SEC but subject to disclosure.
+  brief_zh: 批发商为换取券商把客户订单路由给自己而支付的费用；SEC 允许但要求披露。
+  detail: Ernst and Spatt (2022) estimate about 40 cents per 100 shares in options against about 20 cents
+    in equities, and the same nominal investment generates ten times as much PFOF in options.
+  detail_zh: Ernst–Spatt (2022) 估计期权每 100 股约 40 美分、股票约 20 美分，且同样名义投资在期权上产生的 PFOF 是股票的十倍。
+  chapter: '9.5'
+  first_seen: Chapter 9
+- term: Latency arbitrage
+  term_zh: 延迟套利
+  pinyin: yan
+  brief: Profiting from the tiny interval in which one venue's quote is stale and another's has moved,
+    by being faster than everyone else.
+  brief_zh: 在一个场所报价已过期、另一场所报价已变动的极短瞬间，靠比所有人更快而获利。
+  detail: Aquilina, Budish and O'Neill (2022) measure it in UK equities as about 0.42 to 0.53 basis points
+    of trading volume, roughly a third of the effective spread, and estimate that eliminating it would
+    cut the market's cost of liquidity by 17%.
+  detail_zh: Aquilina–Budish–O'Neill (2022) 在英国股票上测得它约占成交量的 0.42–0.53 个基点、约为有效价差的三分之一，并估计消除它可使市场流动性成本下降
+    17%。
+  chapter: '9.7'
+  first_seen: Chapter 9

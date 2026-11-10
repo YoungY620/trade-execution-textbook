@@ -1,0 +1,20 @@
+[book]
+title = "从认知到执行：交易执行的系统理论"
+description = "从投资认知或水下信息到交易执行：调度、下单、路由与成本度量，以及每一层背后的理论、历史与实践。"
+language = "zh"
+src = "src"
+
+[preprocessor.mathprotect]
+command = "python3 ../tools/protect_math.py"
+
+[output.html]
+additional-css = ["bd.css"]
+additional-js = ["bd-lang.js", "bd-cjksearch.js", "bd-glossary.js"]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/YoungY620/trade-execution-textbook"
+edit-url-template = "https://github.com/YoungY620/trade-execution-textbook/edit/main/zh/src/{path}"
+
+[output.html.search]
+limit-results = 30
+use-boolean-and = true

@@ -1,0 +1,632 @@
+[
+ {
+  "id": "term-markov-decision-process",
+  "term": "马尔可夫决策过程",
+  "brief": "不确定性下序贯决策的形式化对象，由状态、动作、转移概率、奖励与折扣（或有限时域）构成。"
+ },
+ {
+  "id": "term-q-learning",
+  "term": "Q 学习",
+  "brief": "无模型算法，通过不断由转移更新估计，学出每个状态下各动作的期望成本或价值。"
+ },
+ {
+  "id": "term-actor-critic",
+  "term": "演员–评论家",
+  "brief": "策略梯度的设计，含两部分：演员提出动作，评论家估计价值并提供学习信号。"
+ },
+ {
+  "id": "term-deep-q-network",
+  "term": "深度 Q 网络",
+  "brief": "用神经网络逼近 Q 函数，从而无需查表即可使用订单簿特征等高维状态。"
+ },
+ {
+  "id": "term-double-deep-q-learning",
+  "term": "双重深度 Q 学习",
+  "brief": "深度 Q 网络的改进：用两个网络把动作选择与价值估计分开，抑制 Q 值的系统性高估。"
+ },
+ {
+  "id": "term-policy-gradient",
+  "term": "策略梯度",
+  "brief": "一族直接优化策略的方法，通过估计期望收益对策略参数的梯度来更新。"
+ },
+ {
+  "id": "term-proximal-policy-optimization",
+  "term": "近端策略优化",
+  "brief": "一种策略梯度方法，通过裁剪策略更新使新策略不远离旧策略，训练稳定且调参成本低。"
+ },
+ {
+  "id": "term-imitation-learning",
+  "term": "模仿学习",
+  "brief": "从其他策略的示范中学习，而不是依赖人工设计的奖励，从而避免昂贵的探索。"
+ },
+ {
+  "id": "term-offline-reinforcement-learning",
+  "term": "离线强化学习",
+  "brief": "只从预先收集的固定数据集学习策略，不与环境交互，适用于在线探索代价过高的场景。"
+ },
+ {
+  "id": "term-policy-distillation",
+  "term": "策略蒸馏",
+  "brief": "训练学生策略去复现教师策略的动作分布，使学生在不具备教师额外输入的情况下继承其行为。"
+ },
+ {
+  "id": "term-microstructure-invariance",
+  "term": "微观结构不变性",
+  "brief": "实证规律：以商业时间度量时，各资产的下注金额分布与单笔成本相同。"
+ },
+ {
+  "id": "term-zero-shot-transfer",
+  "term": "零样本迁移",
+  "brief": "把策略用在从未训练过的资产或市场上且不再学习，并度量其成本差距。"
+ },
+ {
+  "id": "term-concentrated-liquidity",
+  "term": "集中流动性",
+  "brief": "Uniswap v3 等 AMM 的设计，流动性提供者把流动性放在选定价格区间内，而非整条曲线。"
+ },
+ {
+  "id": "term-constant-function-market-maker",
+  "term": "恒定函数做市商",
+  "brief": "一种去中心化交易所，仅当储备上的交易函数不下降时才接受交易，按曲线而非订单簿定价。"
+ },
+ {
+  "id": "term-gas-fee",
+  "term": "Gas 费",
+  "brief": "链上交易的固定成本，按笔收取，而非随交易规模成比例。"
+ },
+ {
+  "id": "term-loss-versus-rebalancing-lvr",
+  "term": "再平衡损失",
+  "brief": "流动性提供者因池机械地卖出升值资产、买入贬值资产而承受的不可对冲损失。"
+ },
+ {
+  "id": "term-predictable-loss",
+  "term": "可预测损失",
+  "brief": "集中流动性提供者的不可对冲损失，由池的曲率算出，随区间收窄而上升。"
+ },
+ {
+  "id": "term-sandwich-attack",
+  "term": "三明治攻击",
+  "brief": "一种 MEV 策略，在受害者链上交易前后各插入一笔交易以恶化其成交价并从中获利。"
+ },
+ {
+  "id": "term-settlement-latency",
+  "term": "结算延迟",
+  "brief": "区块链确认转账前的等待时间，其间跨所套利者暴露于价格风险。"
+ },
+ {
+  "id": "term-tiered-maker-taker-fee",
+  "term": "分层做市—吃单费率",
+  "brief": "按成交额比例收取的交易所费，费率取决于过去 30 天的成交量，且挂单与吃单不同。"
+ },
+ {
+  "id": "term-internalization",
+  "term": "内部化",
+  "brief": "经纪自营商用自有库存或自身订单流撮合客户可成交订单、而不送往公开场所的做法。"
+ },
+ {
+  "id": "term-information-half-life",
+  "term": "信息半衰期",
+  "brief": "私有估值信号在被市场价格消化前预期能维持的时间，决定知情交易的节奏。"
+ },
+ {
+  "id": "term-best-execution",
+  "term": "最优执行义务",
+  "brief": "经纪商为客户订单争取最优成交条件的监管义务，它确定可行的路由集合，以及成交可以公允地对照哪个基准来评估。"
+ },
+ {
+  "id": "term-principal-agent-problem",
+  "term": "委托代理问题",
+  "brief": "执行交易的一方（经纪商）与承担其成本的一方（客户）之间的错位，由基准与费率结构共同决定。"
+ },
+ {
+  "id": "term-impact-surface",
+  "term": "冲击面",
+  "brief": "把市场冲击同时视为参与率与时长两者的函数，而不只是订单规模的函数。"
+ },
+ {
+  "id": "term-metaorder",
+  "term": "元订单",
+  "brief": "实现同一次交易决策的一束子单，即方根律所描述其冲击的父订单。"
+ },
+ {
+  "id": "term-participation-rate",
+  "term": "参与率",
+  "brief": "在成交窗口内交易者自身订单占市场成交量的比例，也是 POV 策略固定的变量。"
+ },
+ {
+  "id": "term-realised-spread",
+  "term": "实现价差",
+  "brief": "成交价与订单之后固定间隔（通常五分钟）所测报价中间价之差的二倍。"
+ },
+ {
+  "id": "term-data-snooping",
+  "term": "数据窥探",
+  "brief": "在用于报告业绩的同一个样本上挑选模型或参数，使报告结果好于其真实水平。"
+ },
+ {
+  "id": "term-liquidity-rebate",
+  "term": "流动性返佣",
+  "brief": "交易所对挂入订单簿并最终成交的限价单支付的挂单方返还，资金来自向可成交订单收取的吃单费。"
+ },
+ {
+  "id": "term-market-impact-model",
+  "term": "市场冲击模型",
+  "brief": "描述一定规模交易如何推动价格（通常分为临时与永久两部分）的函数形式，是每个执行排程优化的对象。"
+ },
+ {
+  "id": "term-model-free-reinforcement-learning",
+  "term": "无模型强化学习",
+  "brief": "把执行当作马尔可夫决策过程、从经验中学出策略、不假定已知冲击模型的学习范式。"
+ },
+ {
+  "id": "term-stochastic-control",
+  "term": "随机控制",
+  "brief": "把执行问题写成受控状态过程（库存、价格）加目标函数，再解动态规划或 HJB 方程的范式。"
+ },
+ {
+  "id": "term-time-consistency",
+  "term": "时间一致性",
+  "brief": "今天选定的策略在之后仍然最优、因而可以作为反馈规则执行的性质；Almgren-Chriss 的均值—方差目标不具备它。"
+ },
+ {
+  "id": "term-open-outcry",
+  "term": "公开喊价",
+  "brief": "场内以口头喊出买卖价、须有人主动\"砸单/吃单\"才成交的报价方式。"
+ },
+ {
+  "id": "term-specialist",
+  "term": "专家经纪人",
+  "brief": "纽交所管理某只股票唯一限价订单簿的会员，负有维持窄价差等义务，并享有知晓簿面、优先接单的特权。"
+ },
+ {
+  "id": "term-trade-through",
+  "term": "成交穿透",
+  "brief": "以劣于市场他处最优挂单的价格成交，从而跳过了更优价的挂单。"
+ },
+ {
+  "id": "term-circuit-breaker",
+  "term": "熔断机制",
+  "brief": "指数相对前收盘大跌时触发的全市场停牌，用于打断暴跌、让参与者重新评估。"
+ },
+ {
+  "id": "term-ecn",
+  "term": "电子通信网络",
+  "brief": "电子通信网络，指 Instinet、Island 这类无需注册为交易所即可撮合订单的电子场所。"
+ },
+ {
+  "id": "term-nbbo",
+  "term": "全国最优买卖报价",
+  "brief": "全国最优买卖报价，由合并报价数据算出的全市场最高买价与最低卖价，是执行与路由的参照。"
+ },
+ {
+  "id": "term-decimalisation",
+  "term": "最小报价单位十进制化",
+  "brief": "美国股票报价增量由 1/8 美元改为 1 美分，1997 年立法、2001 年完成，压缩了价格竞争的网格。"
+ },
+ {
+  "id": "term-colocation",
+  "term": "共置",
+  "brief": "把交易公司的服务器放进交易所机房、靠近撮合引擎，以最小化到市场的物理距离与延迟。"
+ },
+ {
+  "id": "term-order-protection-rule",
+  "term": "订单保护规则",
+  "brief": "Reg NMS 第 611 条，要求交易中心尽量避免以劣于受保护报价的价格成交；只有可立即自动执行的报价才受保护。"
+ },
+ {
+  "id": "term-reg-nms",
+  "term": "全国市场系统条例",
+  "brief": "SEC 2005 年通过的《全国市场系统条例》，把美国各股票交易中心联结成\"虚拟合并\"市场。"
+ },
+ {
+  "id": "term-funding-rate",
+  "term": "资金费率",
+  "brief": "永续合约多空之间的周期性支付，是期货与现货价差的截断函数，用于锚定现货并直接进入执行成本。"
+ },
+ {
+  "id": "term-perpetual-futures",
+  "term": "永续合约",
+  "brief": "没有到期日、靠周期性资金支付锚定现货的期货合约，加密市场的主要执行场所，BitMEX 2016 年首创。"
+ },
+ {
+  "id": "term-bid-ask-spread",
+  "term": "买卖价差",
+  "brief": "最优卖价与最优买价之差，是需要即时成交者缴纳的通行费。"
+ },
+ {
+  "id": "term-liquidity",
+  "term": "流动性",
+  "brief": "想交易时就能交易的能力，可拆为即时性、紧度、深度、弹性，并具有网络外部性。"
+ },
+ {
+  "id": "term-liquidity-supplier",
+  "term": "流动性提供者",
+  "brief": "作为对手方让他人想交易时就能成交的利润动机交易者：做市商跨时间，套利者跨市场。"
+ },
+ {
+  "id": "term-make-take-choice",
+  "term": "挂单—吃单选择",
+  "brief": "挂出被动单还是主动跨越价差：挂单更便宜却可能不成交，吃单付出价差但确定成交。"
+ },
+ {
+  "id": "term-utilitarian-trader",
+  "term": "功利交易者",
+  "brief": "为交易之外的目的而交易、并愿意承担成本的人；其支付意愿供养所有利润动机交易者。"
+ },
+ {
+  "id": "term-effective-spread",
+  "term": "有效价差",
+  "brief": "成交价与成交时报价中间价之差的两倍，是立即成交订单的实际代价。"
+ },
+ {
+  "id": "term-price-improvement",
+  "term": "价格改善",
+  "brief": "成交价优于近侧报价的幅度，例如在暗池成交或与隐藏单成交时。"
+ },
+ {
+  "id": "term-realized-spread",
+  "term": "实现价差",
+  "brief": "成交价与五分钟后报价中间价之差的两倍，是价格移动后流动性提供者实际留下的补偿。"
+ },
+ {
+  "id": "term-roll-s-implicit-spread",
+  "term": "罗尔隐含价差",
+  "brief": "仅由价格变动的一阶序列协方差反推有效价差的免报价估计量，s = 2√(−cov)。"
+ },
+ {
+  "id": "term-adverse-selection",
+  "term": "逆向选择",
+  "brief": "与你成交的人可能是因为知道你不知道的事，因此报价必须按其反推盈亏平衡。"
+ },
+ {
+  "id": "term-kyle-s-lambda",
+  "term": "凯尔 λ",
+  "brief": "Kyle 模型中价格对总订单流的斜率，经典线性冲击系数，其倒数为市场深度。"
+ },
+ {
+  "id": "term-market-depth",
+  "term": "市场深度",
+  "brief": "使价格变动一个单位所需的订单流，即 Kyle's lambda 的倒数，正比于噪声交易量除以未消化信息。"
+ },
+ {
+  "id": "term-instantaneous-impact-function",
+  "term": "瞬时冲击函数",
+  "brief": "Guéant 的 L(ρ)，单位成交量成本关于参与率的函数；严格凸、偶、L(0)=0 且渐近超线性。"
+ },
+ {
+  "id": "term-market-resilience",
+  "term": "市场弹性",
+  "brief": "价格在随机、无信息冲击后回复的速度，也是暂时冲击可以复原的原因。"
+ },
+ {
+  "id": "term-permanent-impact",
+  "term": "永久冲击",
+  "brief": "冲击中反映信息释放、留在价格里的部分，等待也无法收回。"
+ },
+ {
+  "id": "term-square-root-law",
+  "term": "平方根律",
+  "brief": "经验规律：母单的平均价格变动正比于其规模相对成交量之比的平方根乘以波动率。"
+ },
+ {
+  "id": "term-temporary-impact",
+  "term": "暂时冲击",
+  "brief": "冲击中因耗尽挂单流动性导致的部分，随盘口回填而衰减，放慢节奏即可优化掉。"
+ },
+ {
+  "id": "term-market-microstructure-invariance",
+  "term": "市场微观结构不变性",
+  "brief": "假设：按单位业务时间（每次下注到达）度量，跨资产的下注规模与交易成本是常量。"
+ },
+ {
+  "id": "term-order-flow-imbalance",
+  "term": "订单流失衡",
+  "brief": "最优价位上买卖的净差额；短时间尺度上驱动价格变动的是它而非成交量。"
+ },
+ {
+  "id": "term-price-discovery",
+  "term": "价格发现",
+  "brief": "买卖报价与成交通过聚合彼此不同的信念收敛到新价值的过程，结果事先未知。"
+ },
+ {
+  "id": "term-arrival-price",
+  "term": "到达价格",
+  "brief": "订单交给交易台那一刻的中间价，是到达价（实施差额）算法使用的基准。"
+ },
+ {
+  "id": "term-decision-price",
+  "term": "决策价格",
+  "brief": "管理者决定建仓时的价格（通常取中间价），是实施差额的度量基准。"
+ },
+ {
+  "id": "term-implementation-shortfall",
+  "term": "实施差额",
+  "brief": "决策价位下的纸上组合与实际成交组合之间的差额，是度量交易成本的标准指标。"
+ },
+ {
+  "id": "term-paper-portfolio",
+  "term": "纸上组合",
+  "brief": "想象中按决策时中间价取得的全部目标持仓，不含佣金、价差与冲击。"
+ },
+ {
+  "id": "term-delay-cost",
+  "term": "延迟成本",
+  "brief": "决策到首笔交易释放之间的价格暴露成本，等于成交量乘以该期间的价格变动。"
+ },
+ {
+  "id": "term-opportunity-cost",
+  "term": "机会成本",
+  "brief": "未成交余量按期末价格计价的成本，只有完全成交时才为零。"
+ },
+ {
+  "id": "term-gamma-bridge",
+  "term": "伽马桥",
+  "brief": "Frei 与 Westray 用于刻画日内相对成交量曲线的过程，实证上可拟合且与总成交量无关。"
+ },
+ {
+  "id": "term-guaranteed-vwap",
+  "term": "保证成交均价",
+  "brief": "经纪商承诺按当期 VWAP 交付客户订单的合约，其溢价等于该义务的无差异价格。"
+ },
+ {
+  "id": "term-percentage-of-volume",
+  "term": "参与率",
+  "brief": "POV 策略按市场成交量的固定比例成交，期限由此隐含；其最优比率在 Guéant 模型中有闭式解。"
+ },
+ {
+  "id": "term-volume-weighted-average-price",
+  "term": "成交量加权平均价",
+  "brief": "按各价位成交量加权的期间均价，作为执行基准可被前倾下单所影响。"
+ },
+ {
+  "id": "term-target-close",
+  "term": "目标收盘",
+  "brief": "以收盘价为基准的执行方式，终点固定、起点未知，是实施差额的镜像。"
+ },
+ {
+  "id": "term-transaction-cost-analysis",
+  "term": "交易成本分析",
+  "brief": "围绕执行的度量闭环：事前成本预估、事后分项归因、基准选择与统计显著性。"
+ },
+ {
+  "id": "term-efficient-frontier",
+  "term": "有效前沿",
+  "brief": "在每个成本方差水平下期望成本最小的一族调度，随风险厌恶参数变动扫出的曲线。"
+ },
+ {
+  "id": "term-half-life-of-a-trade",
+  "term": "交易的半衰期",
+  "brief": "头寸衰减到 1/e 所需的时间 θ=1/κ，只由流动性、波动率和风险厌恶决定，与期限无关。"
+ },
+ {
+  "id": "term-hyperbolic-sine-trajectory",
+  "term": "双曲正弦轨迹",
+  "brief": "线性冲击下最优持仓路径的闭式解 x(t)=X·sinh(κ(T−t))/sinh(κT)。"
+ },
+ {
+  "id": "term-liquidity-adjusted-value-at-risk",
+  "term": "流动性调整 VaR",
+  "brief": "即 L-VaR，给定期限下任一静态清算策略所能达到的最小风险价值 VaR_p(x)=λ_v·√(V(x))+E(x)。"
+ },
+ {
+  "id": "term-naive-strategy",
+  "term": "平均切分策略（naïve 策略）",
+  "brief": "等量、等间隔切分的调度，在忽略风险时使期望成本最小。"
+ },
+ {
+  "id": "term-quadratic-cost-model",
+  "term": "二次成本模型",
+  "brief": "线性冲击模型的别名：单区间成交 n 单位的成本为 ε|n|+(η/τ)n²，对切片大小是二次的。"
+ },
+ {
+  "id": "term-risk-aversion-parameter",
+  "term": "风险厌恶参数",
+  "brief": "目标函数 E(x)+λV(x) 中的乘子 λ，衡量成本方差相对期望成本被惩罚的重度。"
+ },
+ {
+  "id": "term-trading-trajectory",
+  "term": "交易轨迹",
+  "brief": "从初始头寸 X 到期限时归零的持仓序列 x_0,…,x_N，等价地由交易清单 n_k 描述。"
+ },
+ {
+  "id": "term-trading-enhanced-risk",
+  "term": "交易放大的风险",
+  "brief": "随交易规模本身增大的执行成本方差，因为大单更易遭遇不确定的流动性。"
+ },
+ {
+  "id": "term-resilience",
+  "term": "复原速度",
+  "brief": "新挂单补回交易造成的订单簿缺口的快慢，表现为卖一回到稳态的衰减速率。"
+ },
+ {
+  "id": "term-price-manipulation",
+  "term": "价格操纵",
+  "brief": "从零头寸出发、来回交易、最终回到零头寸却获得正期望利润的回路。"
+ },
+ {
+  "id": "term-transient-price-impact",
+  "term": "瞬态冲击",
+  "brief": "交易刚发生时最强、随后逐渐衰减的冲击，而非永久地移动价格。"
+ },
+ {
+  "id": "term-volume-effect-process",
+  "term": "成交量效应过程",
+  "brief": "交易仍留在订单簿上、随簿面恢复而衰减的那部分，决定当前卖一价。"
+ },
+ {
+  "id": "term-indifference-pricing",
+  "term": "无差异定价",
+  "brief": "以使交易者在接手与不接手之间无差异的现金额来定价块交易，前提是该头寸必须被清掉。"
+ },
+ {
+  "id": "term-aggressive-in-the-money",
+  "term": "随盈利而激进",
+  "brief": "价格朝有利方向变动、头寸相对到达价处于盈利时卖得更快。"
+ },
+ {
+  "id": "term-mean-quadratic-variation",
+  "term": "均值–二次变差",
+  "brief": "时间一致的执行目标：惩罚期望成本、持仓平方的积分，以及策略的二次变差。"
+ },
+ {
+  "id": "term-pre-commitment",
+  "term": "预承诺",
+  "brief": "按初始时刻衡量的均值–方差目标求解，然后照此执行，即便它在之后已不再最优。"
+ },
+ {
+  "id": "term-time-inconsistency",
+  "term": "时间不一致",
+  "brief": "在某一时点算出的最优策略过后不再最优（即便条件未变），因此不能直接用动态规划。"
+ },
+ {
+  "id": "term-inventory-risk",
+  "term": "库存风险",
+  "brief": "成交后持有头寸、在平掉之前价格可能不利变动而承担的风险。"
+ },
+ {
+  "id": "term-market-making",
+  "term": "做市",
+  "brief": "在参考价两侧同时报价、赚取价差，并承担成交带来的库存风险。"
+ },
+ {
+  "id": "term-fill-intensity",
+  "term": "成交强度",
+  "brief": "挂单被成交的泊松速率，是报价离中间价距离的递减函数。"
+ },
+ {
+  "id": "term-inventory-skew",
+  "term": "库存偏移",
+  "brief": "因持仓而使报价中心偏离市场中间价的量，即保留价格减去中间价。"
+ },
+ {
+  "id": "term-reservation-price",
+  "term": "保留价格",
+  "brief": "按持仓调整后的中间价，做市商在这一点上对是否报价无差异，又称无差异价格。"
+ },
+ {
+  "id": "term-hjb-quasi-variational-inequality",
+  "term": "拟变分不等式",
+  "brief": "正则与脉冲混合控制问题的动态规划方程，写成\"运行方程与脉冲条件取最小\"的形式。"
+ },
+ {
+  "id": "term-impulse-control",
+  "term": "脉冲控制",
+  "brief": "在孤立停时施加的控制，使状态发生离散跳跃而非连续变化。"
+ },
+ {
+  "id": "term-alpha-signal",
+  "term": "alpha 信号",
+  "brief": "对下一次价格变动方向的短周期预测，由订单流或失衡驱动，用来偏移报价或择时交易。"
+ },
+ {
+  "id": "term-latency-cost",
+  "term": "延迟成本",
+  "brief": "反应慢所损失的价值，等于即时反应的最优值减去给定延迟下可达的值。"
+ },
+ {
+  "id": "term-microprice",
+  "term": "微价格",
+  "brief": "给定当前订单簿失衡下的长期预期价格，用作挂限价单时的比较基准。"
+ },
+ {
+  "id": "term-effective-rebate",
+  "term": "有效返佣",
+  "brief": "交易所返佣减去该场所的逆向选择惩罚后的净收益。"
+ },
+ {
+  "id": "term-hidden-order",
+  "term": "隐藏单",
+  "brief": "完全不显示数量的限价单，整个数量不进入可见订单簿。"
+ },
+ {
+  "id": "term-iceberg-order",
+  "term": "冰山单",
+  "brief": "只显示小部分峰量、其余隐藏，峰量成交后自动补出新峰的限价单。"
+ },
+ {
+  "id": "term-queue-position",
+  "term": "队列位置",
+  "brief": "订单在其价位先进先出队列中的排位，决定成交概率与被逆向选择的程度。"
+ },
+ {
+  "id": "term-order-book-imbalance",
+  "term": "订单簿不平衡",
+  "brief": "最优报价处可见买卖流动性的比例，常作为短期价格与流量的预测指标。"
+ },
+ {
+  "id": "term-picking-off-risk",
+  "term": "被抢单风险",
+  "brief": "显示中的挂单在撤单前被快速交易者利用过时报价抢先成交的风险。"
+ },
+ {
+  "id": "term-dark-pool",
+  "term": "暗池",
+  "brief": "不公开报价、通常按公开市场中间价撮合的非显示交易场所。"
+ },
+ {
+  "id": "term-predatory-trading",
+  "term": "掠夺性交易",
+  "brief": "针对可观测的清算需求抢跑，同向卖出后在其压低价格后买回。"
+ },
+ {
+  "id": "term-split-order",
+  "term": "拆单",
+  "brief": "把大单拆成小单以隐藏意图；Stenfors–Susai 定义为 0.1 秒内同价提交的成对限价单。"
+ },
+ {
+  "id": "term-vpin",
+  "term": "成交量同步的知情交易概率",
+  "brief": "按成交量时间计算的订单流毒性实时指标，取各成交量桶买卖失衡绝对值的均值。"
+ },
+ {
+  "id": "term-market-fragmentation",
+  "term": "市场碎片化",
+  "brief": "同一标的的交易分散在多个场所，且需区分明牌场所之间的分散与明暗之比。"
+ },
+ {
+  "id": "term-access-fee",
+  "term": "接入费",
+  "brief": "交易中心对访问其受保护报价收取的费用，Rule 610 将上限定为每股 USD 0.003，以使显示价接近真实价格。"
+ },
+ {
+  "id": "term-intermarket-sweep-order",
+  "term": "跨市场扫单",
+  "brief": "被标记为扫单并同时发出其他指令以覆盖全部更优受保护报价的限价单，接收方可立即执行而无须顾及那些报价。"
+ },
+ {
+  "id": "term-national-best-bid-and-offer",
+  "term": "全国最优买卖报价",
+  "brief": "全部自动化交易中心中最优的受保护买价与卖价，简称 NBBO，是价格保护的参照。"
+ },
+ {
+  "id": "term-protected-quotation",
+  "term": "受保护报价",
+  "brief": "同时是自动化报价、由自动化交易中心显示、且为该场所家族最优买卖价的报价，只有它受 Rule 611 保护。"
+ },
+ {
+  "id": "term-smart-order-routing",
+  "term": "智能订单路由",
+  "brief": "自动整合多个场所的报价，并在价格、费率与成交概率之间优化母单的跨场所拆分。"
+ },
+ {
+  "id": "term-inverted-fee-venue",
+  "term": "反向费率场所",
+  "brief": "把挂单—吃单定价颠倒过来的场所：对提供流动性收费，对移除流动性付返佣。"
+ },
+ {
+  "id": "term-maker-taker-pricing",
+  "term": "挂单—吃单定价",
+  "brief": "交易所对挂单返还佣金、对吃单收取更高费用的定价模式，差额由交易所留存。"
+ },
+ {
+  "id": "term-payment-for-order-flow",
+  "term": "订单流付费",
+  "brief": "批发商为换取券商把客户订单路由给自己而支付的费用；SEC 允许但要求披露。"
+ },
+ {
+  "id": "term-latency-arbitrage",
+  "term": "延迟套利",
+  "brief": "在一个场所报价已过期、另一场所报价已变动的极短瞬间，靠比所有人更快而获利。"
+ }
+]

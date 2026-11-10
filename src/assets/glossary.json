@@ -1,0 +1,632 @@
+[
+ {
+  "id": "term-markov-decision-process",
+  "term": "Markov decision process",
+  "brief": "The formal object for sequential decisions: states, actions, transition probabilities, a reward, and a finite horizon or discount."
+ },
+ {
+  "id": "term-q-learning",
+  "term": "Q-learning",
+  "brief": "A model-free algorithm that learns the expected value or cost of each action in each state by updating estimates from transitions."
+ },
+ {
+  "id": "term-actor-critic",
+  "term": "Actor–critic",
+  "brief": "A policy-gradient design with two parts: an actor that proposes actions and a critic that estimates value and supplies the learning signal."
+ },
+ {
+  "id": "term-deep-q-network",
+  "term": "Deep Q-network",
+  "brief": "A neural network that approximates the Q-function, so high-dimensional states such as order-book features need no lookup table."
+ },
+ {
+  "id": "term-double-deep-q-learning",
+  "term": "Double deep Q-learning",
+  "brief": "A deep Q-network variant that separates action selection from value estimation across two networks, reducing overestimation of Q-values."
+ },
+ {
+  "id": "term-policy-gradient",
+  "term": "Policy gradient",
+  "brief": "A family of methods that optimise the policy directly by estimating the gradient of expected reward with respect to the policy parameters."
+ },
+ {
+  "id": "term-proximal-policy-optimization",
+  "term": "Proximal policy optimization",
+  "brief": "A policy-gradient method that clips each update so the new policy cannot move far from the old, giving stable training."
+ },
+ {
+  "id": "term-imitation-learning",
+  "term": "Imitation learning",
+  "brief": "Learning a policy from demonstrations by another strategy rather than from a hand-designed reward, avoiding costly exploration."
+ },
+ {
+  "id": "term-offline-reinforcement-learning",
+  "term": "Offline reinforcement learning",
+  "brief": "Learning a policy from a fixed, pre-collected dataset without interacting with the environment, where online exploration is too costly."
+ },
+ {
+  "id": "term-policy-distillation",
+  "term": "Policy distillation",
+  "brief": "Training a student policy to reproduce a teacher's action distribution, so the student keeps its behaviour without its extra inputs."
+ },
+ {
+  "id": "term-microstructure-invariance",
+  "term": "Microstructure invariance",
+  "brief": "The empirical regularity that, measured in business time, the distribution of bet sizes and the cost of a bet are the same across assets."
+ },
+ {
+  "id": "term-zero-shot-transfer",
+  "term": "Zero-shot transfer",
+  "brief": "Applying a policy to assets or markets it was never trained on, with no further learning, and measuring the cost gap it suffers."
+ },
+ {
+  "id": "term-concentrated-liquidity",
+  "term": "Concentrated liquidity",
+  "brief": "An AMM design (Uniswap v3) where liquidity providers place liquidity within a chosen price range instead of the full curve."
+ },
+ {
+  "id": "term-constant-function-market-maker",
+  "term": "Constant function market maker",
+  "brief": "A decentralised exchange that prices trades on a curve, accepting a trade only if a trading function over its reserves does not decrease."
+ },
+ {
+  "id": "term-gas-fee",
+  "term": "Gas fee",
+  "brief": "The fixed on-chain cost of a blockchain transaction, borne per transaction rather than proportional to trade size."
+ },
+ {
+  "id": "term-loss-versus-rebalancing-lvr",
+  "term": "Loss-versus-rebalancing (LVR)",
+  "brief": "The unhedgeable loss a liquidity provider suffers because the pool mechanically sells the appreciating asset and buys the depreciating one."
+ },
+ {
+  "id": "term-predictable-loss",
+  "term": "Predictable loss",
+  "brief": "The unhedgeable loss of a concentrated-liquidity liquidity provider, computed from the pool's curvature and rising as the range narrows."
+ },
+ {
+  "id": "term-sandwich-attack",
+  "term": "Sandwich attack",
+  "brief": "An MEV strategy that places trades before and after a victim's on-chain trade to worsen its price and profit from the move."
+ },
+ {
+  "id": "term-settlement-latency",
+  "term": "Settlement latency",
+  "brief": "The waiting time until a blockchain confirms a transfer, during which a cross-exchange arbitrageur is exposed to price risk."
+ },
+ {
+  "id": "term-tiered-maker-taker-fee",
+  "term": "Tiered maker-taker fee",
+  "brief": "An exchange fee charged as a fraction of traded notional, tiered by realised 30-day volume and differing between posting and taking."
+ },
+ {
+  "id": "term-internalization",
+  "term": "Internalization",
+  "brief": "Executing a client's marketable order against a broker-dealer's own inventory or flow instead of sending it to a public venue."
+ },
+ {
+  "id": "term-information-half-life",
+  "term": "Information half-life",
+  "brief": "The time a private valuation signal is expected to persist before the market prices it away; it sets the pace of an informed trade."
+ },
+ {
+  "id": "term-best-execution",
+  "term": "Best execution",
+  "brief": "A broker's regulatory duty to seek the best available terms for a client order, fixing the feasible routing set and the fair benchmark."
+ },
+ {
+  "id": "term-principal-agent-problem",
+  "term": "Principal–agent problem",
+  "brief": "The misalignment between the broker who executes a trade and the client who bears its cost, set by the benchmark and the fee schedule."
+ },
+ {
+  "id": "term-impact-surface",
+  "term": "Impact surface",
+  "brief": "Market impact as a function of both participation rate and duration, rather than of order size alone."
+ },
+ {
+  "id": "term-metaorder",
+  "term": "Metaorder",
+  "brief": "The bundle of child orders that implements one trading decision; the parent order whose impact the square-root law describes."
+ },
+ {
+  "id": "term-participation-rate",
+  "term": "Participation rate",
+  "brief": "The share of market volume during the execution window that the trader's own order accounts for; the variable a POV strategy fixes."
+ },
+ {
+  "id": "term-realised-spread",
+  "term": "Realised spread",
+  "brief": "Twice the difference between the execution price and the quote midpoint measured a fixed interval after the order, usually five minutes."
+ },
+ {
+  "id": "term-data-snooping",
+  "term": "Data snooping",
+  "brief": "Selecting a model or parameter on the same sample used to report its performance, which makes the reported result look better than it is."
+ },
+ {
+  "id": "term-liquidity-rebate",
+  "term": "Liquidity rebate",
+  "brief": "The payment an exchange gives a resting limit order when it later executes, funded by the fee charged to marketable orders."
+ },
+ {
+  "id": "term-market-impact-model",
+  "term": "Market impact model",
+  "brief": "The assumed rule for how a trade moves the price, split into temporary and permanent parts; every execution scheduler optimises against it."
+ },
+ {
+  "id": "term-model-free-reinforcement-learning",
+  "term": "Model-free reinforcement learning",
+  "brief": "The learning paradigm that treats execution as a Markov decision process and learns a policy from experience, without a known impact model."
+ },
+ {
+  "id": "term-stochastic-control",
+  "term": "Stochastic control",
+  "brief": "The paradigm that casts execution as a controlled state process plus an objective, and solves the resulting dynamic program or HJB equation."
+ },
+ {
+  "id": "term-time-consistency",
+  "term": "Time consistency",
+  "brief": "The property that the policy chosen today stays optimal later, so it can run as a feedback rule; mean-variance execution lacks it."
+ },
+ {
+  "id": "term-open-outcry",
+  "term": "open outcry",
+  "brief": "The pre-electronic pit protocol in which bids and offers are cried aloud and quotes stay passive until someone hits or lifts them."
+ },
+ {
+  "id": "term-specialist",
+  "term": "specialist",
+  "brief": "The NYSE member who ran one stock's limit-order book, owing narrow quotes and public priority, knowing the book and getting first look."
+ },
+ {
+  "id": "term-trade-through",
+  "term": "trade-through",
+  "brief": "An execution at a price inferior to a bid or offer standing elsewhere, so that a better-priced resting order is bypassed."
+ },
+ {
+  "id": "term-circuit-breaker",
+  "term": "circuit breaker",
+  "brief": "A market-wide halt triggered by a large index fall, meant to interrupt a collapse and let participants reassess."
+ },
+ {
+  "id": "term-ecn",
+  "term": "ECN",
+  "brief": "A non-exchange electronic venue, such as Instinet or Island, that matched orders without taking on the regulation of an exchange."
+ },
+ {
+  "id": "term-nbbo",
+  "term": "NBBO",
+  "brief": "The National Best Bid and Offer — the highest bid and lowest offer across all trading centres, the reference for best execution and routing."
+ },
+ {
+  "id": "term-decimalisation",
+  "term": "decimalisation",
+  "brief": "The change of the US equity pricing increment from one-eighth of a dollar to one cent, legislated in 1997 and completed in 2001."
+ },
+ {
+  "id": "term-colocation",
+  "term": "colocation",
+  "brief": "Placing a firm's computer in the exchange's data centre, beside the matching engine, to minimise the distance and latency to the market."
+ },
+ {
+  "id": "term-order-protection-rule",
+  "term": "order protection rule",
+  "brief": "Reg NMS Rule 611 — centres must try to avoid executions inferior to protected quotations; only immediately accessible quotes are protected."
+ },
+ {
+  "id": "term-reg-nms",
+  "term": "Reg NMS",
+  "brief": "The SEC's Regulation National Market System (2005), which links the separate US equity trading centres into a virtually consolidated market."
+ },
+ {
+  "id": "term-funding-rate",
+  "term": "funding rate",
+  "brief": "The periodic payment between longs and shorts of a perpetual, a clamped function of the futures-spot premium, which anchors it to spot."
+ },
+ {
+  "id": "term-perpetual-futures",
+  "term": "perpetual futures",
+  "brief": "A futures contract with no expiry, anchored to spot by periodic funding payments; crypto's main venue, introduced by BitMEX in 2016."
+ },
+ {
+  "id": "term-bid-ask-spread",
+  "term": "Bid-ask spread",
+  "brief": "The gap between the best sell price and the best buy price; the toll a trader pays for demanding immediate execution."
+ },
+ {
+  "id": "term-liquidity",
+  "term": "Liquidity",
+  "brief": "The ability to trade when you want to trade; split into immediacy, tightness, depth and resiliency, and behaving as a network externality."
+ },
+ {
+  "id": "term-liquidity-supplier",
+  "term": "Liquidity supplier",
+  "brief": "A profit-motivated trader who is the counterparty so others can trade when they want — dealers across time, arbitrageurs across markets."
+ },
+ {
+  "id": "term-make-take-choice",
+  "term": "Make/take choice",
+  "brief": "The decision to post a resting order or cross the spread; posting is cheaper but may never execute, taking costs the spread and is certain."
+ },
+ {
+  "id": "term-utilitarian-trader",
+  "term": "Utilitarian trader",
+  "brief": "A trader who trades to solve a non-trading problem and accepts the costs; his willingness to pay funds all profit-motivated traders."
+ },
+ {
+  "id": "term-effective-spread",
+  "term": "Effective spread",
+  "brief": "Twice the gap between the execution price and the quote midpoint at the trade; the realized cost of an immediately executed order."
+ },
+ {
+  "id": "term-price-improvement",
+  "term": "Price improvement",
+  "brief": "The amount by which an execution price beats the near-side quote, as in a dark trade or against a hidden order."
+ },
+ {
+  "id": "term-realized-spread",
+  "term": "Realized spread",
+  "brief": "Twice the gap between the execution price and the quote midpoint five minutes later; the provider's compensation once the price has moved."
+ },
+ {
+  "id": "term-roll-s-implicit-spread",
+  "term": "Roll's implicit spread",
+  "brief": "A quote-free estimator of the effective bid-ask spread from the first-order serial covariance of price changes, s = 2 sqrt(-cov)."
+ },
+ {
+  "id": "term-adverse-selection",
+  "term": "Adverse selection",
+  "brief": "The risk that whoever trades with you does so because he knows something you do not, forcing your quotes to break even against him."
+ },
+ {
+  "id": "term-kyle-s-lambda",
+  "term": "Kyle's lambda",
+  "brief": "The slope of price on aggregate order flow in Kyle's model; the canonical linear price-impact coefficient, whose reciprocal is market depth."
+ },
+ {
+  "id": "term-market-depth",
+  "term": "Market depth",
+  "brief": "The order flow needed to move price by one unit; the reciprocal of Kyle's lambda, proportional to noise trading over unresolved information."
+ },
+ {
+  "id": "term-instantaneous-impact-function",
+  "term": "Instantaneous impact function",
+  "brief": "Guéant's L(rho), the cost per unit of volume as a function of the participation rate; strictly convex, with L(0)=0 and super-linear growth."
+ },
+ {
+  "id": "term-market-resilience",
+  "term": "Market resilience",
+  "brief": "The speed with which prices recover after a random, uninformative shock; the reason temporary impact is recoverable at all."
+ },
+ {
+  "id": "term-permanent-impact",
+  "term": "Permanent impact",
+  "brief": "The part of a trade's price movement that reflects released information and stays in the price; it is not recoverable by waiting."
+ },
+ {
+  "id": "term-square-root-law",
+  "term": "Square-root law",
+  "brief": "The empirical rule that the average price change of a metaorder scales as the square root of its size relative to volume, times volatility."
+ },
+ {
+  "id": "term-temporary-impact",
+  "term": "Temporary impact",
+  "brief": "The part of a trade's price movement caused by exhausting resting liquidity; it decays as the book refills, so slowing down reduces it."
+ },
+ {
+  "id": "term-market-microstructure-invariance",
+  "term": "Market microstructure invariance",
+  "brief": "The hypothesis that bet sizes and transaction costs are constant across assets once measured per unit of business time."
+ },
+ {
+  "id": "term-order-flow-imbalance",
+  "term": "Order flow imbalance",
+  "brief": "The net of buys and sells at the best quotes; over short intervals it, rather than volume, drives the price change."
+ },
+ {
+  "id": "term-price-discovery",
+  "term": "Price discovery",
+  "brief": "The process by which bids, asks and trades converge on a new value by aggregating heterogeneous beliefs; the outcome is unknown in advance."
+ },
+ {
+  "id": "term-arrival-price",
+  "term": "Arrival Price",
+  "brief": "The midquote at the instant an order is released to the desk; the benchmark used by implementation shortfall algorithms."
+ },
+ {
+  "id": "term-decision-price",
+  "term": "Decision Price",
+  "brief": "The price, usually the midquote, prevailing when a manager decided to hold a position; the benchmark for implementation shortfall."
+ },
+ {
+  "id": "term-implementation-shortfall",
+  "term": "Implementation Shortfall",
+  "brief": "The gap between the paper portfolio valued at decision prices and the portfolio actually executed; the standard measure of trading cost."
+ },
+ {
+  "id": "term-paper-portfolio",
+  "term": "Paper Portfolio",
+  "brief": "A hypothetical holding of the positions an investor decided to hold, taken at the decision-time midquote with no costs."
+ },
+ {
+  "id": "term-delay-cost",
+  "term": "Delay Cost",
+  "brief": "The cost of price exposure between the decision instant and the release of the first trade."
+ },
+ {
+  "id": "term-opportunity-cost",
+  "term": "Opportunity Cost",
+  "brief": "The cost on the unexecuted remainder of an order, marked at the terminal price; zero only if the order fills completely."
+ },
+ {
+  "id": "term-gamma-bridge",
+  "term": "Gamma Bridge",
+  "brief": "A process used by Frei and Westray to model the relative intraday volume curve; empirically tractable and independent of total volume."
+ },
+ {
+  "id": "term-guaranteed-vwap",
+  "term": "Guaranteed VWAP",
+  "brief": "A contract in which a broker promises the period VWAP for a client order, charging a premium equal to the indifference price."
+ },
+ {
+  "id": "term-percentage-of-volume",
+  "term": "Percentage of Volume",
+  "brief": "A strategy trading a constant fraction of market volume, so the horizon is implied; its optimal rate has a closed form in Guéant's model."
+ },
+ {
+  "id": "term-volume-weighted-average-price",
+  "term": "Volume-Weighted Average Price",
+  "brief": "The average price weighted by volume traded at each price over a period; an execution benchmark that can be influenced."
+ },
+ {
+  "id": "term-target-close",
+  "term": "Target Close",
+  "brief": "Execution benchmarked on the closing price, with a fixed end and an unknown start; the mirror image of implementation shortfall."
+ },
+ {
+  "id": "term-transaction-cost-analysis",
+  "term": "Transaction Cost Analysis",
+  "brief": "The measurement loop around execution, covering pre-trade forecasting, post-trade attribution, benchmark choice and significance testing."
+ },
+ {
+  "id": "term-efficient-frontier",
+  "term": "Efficient frontier",
+  "brief": "The family of schedules with minimum expected cost at each level of cost variance, traced out as the risk-aversion parameter varies."
+ },
+ {
+  "id": "term-half-life-of-a-trade",
+  "term": "Half-life of a trade",
+  "brief": "The time theta=1/kappa in which the position decays by a factor e, set only by liquidity, volatility and risk aversion, not by the horizon."
+ },
+ {
+  "id": "term-hyperbolic-sine-trajectory",
+  "term": "Hyperbolic-sine trajectory",
+  "brief": "The closed-form optimal holdings path x(t)=X*sinh(kappa(T-t))/sinh(kappa*T) obtained under linear impact."
+ },
+ {
+  "id": "term-liquidity-adjusted-value-at-risk",
+  "term": "Liquidity-adjusted Value at Risk",
+  "brief": "L-VaR, the smallest value at risk VaR_p(x)=lambda_v*sqrt(V(x))+E(x) attainable by any static liquidation strategy over a given horizon."
+ },
+ {
+  "id": "term-naive-strategy",
+  "term": "Naive strategy",
+  "brief": "The equal-split schedule that trades equal slices over equal intervals, minimising expected cost when risk is ignored."
+ },
+ {
+  "id": "term-quadratic-cost-model",
+  "term": "Quadratic cost model",
+  "brief": "The name for the linear-impact model, because trading n units in one interval costs epsilon*|n|+(eta/tau)*n^2, quadratic in the slice size."
+ },
+ {
+  "id": "term-risk-aversion-parameter",
+  "term": "Risk-aversion parameter",
+  "brief": "The multiplier lambda in the objective E(x)+lambda*V(x), measuring how heavily cost variance is penalised relative to expected cost."
+ },
+ {
+  "id": "term-trading-trajectory",
+  "term": "Trading trajectory",
+  "brief": "The sequence of holdings x_0,...,x_N from the initial block X down to zero at the horizon, equivalently described by the trade list n_k."
+ },
+ {
+  "id": "term-trading-enhanced-risk",
+  "term": "Trading-enhanced risk",
+  "brief": "The part of execution-cost variance that grows with trade size itself, because large trades are more exposed to uncertain liquidity."
+ },
+ {
+  "id": "term-resilience",
+  "term": "Resilience",
+  "brief": "How fast new limit orders replenish the gap a trade tore in the book, i.e. the decay rate of the ask price to its steady state."
+ },
+ {
+  "id": "term-price-manipulation",
+  "term": "Price manipulation",
+  "brief": "A round trip that starts from zero inventory, trades back and forth, and ends at zero inventory with a positive expected profit."
+ },
+ {
+  "id": "term-transient-price-impact",
+  "term": "Transient price impact",
+  "brief": "Price impact that is strongest immediately after a trade and then decays, rather than persisting as a permanent shift of the price."
+ },
+ {
+  "id": "term-volume-effect-process",
+  "term": "Volume effect process",
+  "brief": "The part of a trade that is still visible in the limit order book and decays as the book recovers, driving the current ask price."
+ },
+ {
+  "id": "term-indifference-pricing",
+  "term": "Indifference pricing",
+  "brief": "Pricing a block by the cash amount that leaves the agent indifferent between accepting it and not, given that the block must be liquidated."
+ },
+ {
+  "id": "term-aggressive-in-the-money",
+  "term": "Aggressive in the money",
+  "brief": "Selling faster when the price moves favourably, i.e. when the position is in the money relative to the arrival price."
+ },
+ {
+  "id": "term-mean-quadratic-variation",
+  "term": "Mean-quadratic variation",
+  "brief": "A time-consistent objective penalising expected cost, the running inventory squared, and the quadratic variation of the strategy."
+ },
+ {
+  "id": "term-pre-commitment",
+  "term": "Pre-commitment",
+  "brief": "Solving a mean-variance objective evaluated at the initial time, then committing to that policy even though it is no longer optimal later."
+ },
+ {
+  "id": "term-time-inconsistency",
+  "term": "Time inconsistency",
+  "brief": "A criterion whose optimal policy at one date is no longer optimal later under unchanged conditions, so dynamic programming does not apply."
+ },
+ {
+  "id": "term-inventory-risk",
+  "term": "Inventory risk",
+  "brief": "The risk a liquidity provider bears because fills leave it holding a position whose price may move before it can be unwound."
+ },
+ {
+  "id": "term-market-making",
+  "term": "Market making",
+  "brief": "Quoting both a bid and an ask around a reference price and earning the spread, while carrying the inventory risk the fills create."
+ },
+ {
+  "id": "term-fill-intensity",
+  "term": "Fill intensity",
+  "brief": "The Poisson rate at which a resting quote is executed, a decreasing function of the quote's distance from the mid-price."
+ },
+ {
+  "id": "term-inventory-skew",
+  "term": "Inventory skew",
+  "brief": "The shift of the quoted mid away from the market mid because of the maker's inventory, equal to the reservation price minus the mid."
+ },
+ {
+  "id": "term-reservation-price",
+  "term": "Reservation price",
+  "brief": "The mid-price adjusted for the maker's inventory, at which the maker is indifferent about quoting; also called the indifference price."
+ },
+ {
+  "id": "term-hjb-quasi-variational-inequality",
+  "term": "HJB quasi-variational inequality",
+  "brief": "The dynamic-programming equation for a mixed regular and impulse control problem, the minimum of a running equation and an impulse term."
+ },
+ {
+  "id": "term-impulse-control",
+  "term": "Impulse control",
+  "brief": "A control that acts at isolated stopping times, moving the state by a discrete jump rather than continuously."
+ },
+ {
+  "id": "term-alpha-signal",
+  "term": "Alpha signal",
+  "brief": "A short-horizon predictor of the direction of the next price move, driven by order flow or imbalance, used to skew quotes or time trades."
+ },
+ {
+  "id": "term-latency-cost",
+  "term": "Latency cost",
+  "brief": "The value lost by reacting slowly, equal to the optimal value with immediate response minus the value achievable at a given latency."
+ },
+ {
+  "id": "term-microprice",
+  "term": "Microprice",
+  "brief": "The expected long-run price conditional on the current order-book imbalance, used as the benchmark when placing a limit order."
+ },
+ {
+  "id": "term-effective-rebate",
+  "term": "Effective rebate",
+  "brief": "The exchange's limit-order rebate less a venue-specific penalty for adverse selection, the net figure that a passive fill actually earns."
+ },
+ {
+  "id": "term-hidden-order",
+  "term": "Hidden order",
+  "brief": "A limit order whose size is not displayed at all, so its whole size stays off the visible book, at the cost of time priority."
+ },
+ {
+  "id": "term-iceberg-order",
+  "term": "Iceberg order",
+  "brief": "A limit order that displays only a small peak size, refreshing a new peak from the hidden part each time a displayed peak executes."
+ },
+ {
+  "id": "term-queue-position",
+  "term": "Queue position",
+  "brief": "An order's rank in the FIFO queue at its price. It sets both the probability of being filled and the adverse selection borne when filled."
+ },
+ {
+  "id": "term-order-book-imbalance",
+  "term": "Order book imbalance",
+  "brief": "The ratio of visible bid-side to ask-side liquidity at the best quotes, widely used as a short-horizon predictor of price and flow."
+ },
+ {
+  "id": "term-picking-off-risk",
+  "term": "Picking-off risk",
+  "brief": "The option value fast traders hold against a resting displayed order, which they can hit before it is cancelled."
+ },
+ {
+  "id": "term-dark-pool",
+  "term": "Dark pool",
+  "brief": "A non-displayed trading venue that matches orders without publishing quotes, usually at the midpoint of the lit market."
+ },
+ {
+  "id": "term-predatory-trading",
+  "term": "Predatory trading",
+  "brief": "Front-running a trader whose liquidation need is observable, selling alongside them and buying back once they have pushed the price down."
+ },
+ {
+  "id": "term-split-order",
+  "term": "Split order",
+  "brief": "A large order broken into smaller pieces to conceal intent; Stenfors and Susai define it as same-price orders sent within 0.1 seconds."
+ },
+ {
+  "id": "term-vpin",
+  "term": "VPIN",
+  "brief": "A real-time, volume-time measure of order-flow toxicity computed as average absolute buy-sell imbalance per volume bucket."
+ },
+ {
+  "id": "term-market-fragmentation",
+  "term": "Market fragmentation",
+  "brief": "The dispersal of one security's trading across many venues; it must be split into dispersal among lit venues and the lit-versus-dark divide."
+ },
+ {
+  "id": "term-access-fee",
+  "term": "Access fee",
+  "brief": "The fee for hitting a venue's protected quotations, capped by Rule 610 at USD 0.003 per share so displayed prices stay close to true."
+ },
+ {
+  "id": "term-intermarket-sweep-order",
+  "term": "Intermarket sweep order",
+  "brief": "A limit order marked as a sweep and sent with orders covering all better protected quotations, so it may execute without regard to them."
+ },
+ {
+  "id": "term-national-best-bid-and-offer",
+  "term": "National best bid and offer",
+  "brief": "The best protected bid and offer across all automated trading centers (NBBO), the reference price for price protection."
+ },
+ {
+  "id": "term-protected-quotation",
+  "term": "Protected quotation",
+  "brief": "A quote that is automated, shown by an automated trading center and is a venue family's best bid or offer; only these Rule 611 shields."
+ },
+ {
+  "id": "term-smart-order-routing",
+  "term": "Smart order routing",
+  "brief": "Automated consolidation of several venues' quotes and optimisation of how a parent order splits across them in price, fee and fill odds."
+ },
+ {
+  "id": "term-inverted-fee-venue",
+  "term": "Inverted fee venue",
+  "brief": "A venue that reverses maker-taker pricing, charging for providing liquidity and paying a rebate to remove it."
+ },
+ {
+  "id": "term-maker-taker-pricing",
+  "term": "Maker-taker pricing",
+  "brief": "An exchange model paying a rebate to resting limit orders and charging more to liquidity-removing orders, keeping the difference."
+ },
+ {
+  "id": "term-payment-for-order-flow",
+  "term": "Payment for order flow",
+  "brief": "A payment from a wholesaler to a broker in exchange for routing customer orders to it, permitted by the SEC but subject to disclosure."
+ },
+ {
+  "id": "term-latency-arbitrage",
+  "term": "Latency arbitrage",
+  "brief": "Profiting from the tiny interval in which one venue's quote is stale and another's has moved, by being faster than everyone else."
+ }
+]
